@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sovereign — every country on Earth</title>
+<script>
+  /* Theme before first paint. Classic, inline, guarded. */
+  try {
+    var s = JSON.parse(localStorage.getItem('sovereign.v1') || '{}');
+    if (s.theme === 'dark' || s.theme === 'light') {
+      document.documentElement.setAttribute('data-theme', s.theme);
+    }
+  } catch (e) {}
+</script>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Icon sprite. Same-document <use> works on file://. Stroke comes from .icon. -->
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6"/></symbol>
+  <symbol id="i-x"     viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-back"  viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="i-sun"   viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></symbol>
+  <symbol id="i-moon"  viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></symbol>
+  <symbol id="i-chev"  viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+</svg>
+
+<main class="main" id="main" tabindex="-1">
+
+  <!-- ================= HOME ================= -->
+  <section class="screen screen--home" id="screen-home">
+    <header class="home__head">
+      <h1 class="wordmark">Sovereign</h1>
+      <p class="home__tagline">Every country on Earth. All 197.</p>
+    </header>
+
+    <button class="btn btn--accent btn--cta" id="btn-play" type="button">Play</button>
+
+    <ul class="tiles">
+      <li class="tile">
+        <span class="tile__bar tile__bar--secondary" aria-hidden="true"></span>
+        <span class="tile__value" id="stat-seen">0</span>
+        <span class="tile__label">Countries seen</span>
+      </li>
+      <li class="tile">
+        <span class="tile__bar tile__bar--primary" aria-hidden="true"></span>
+        <span class="tile__value" id="stat-mastered">0</span>
+        <span class="tile__label">Mastered</span>
+      </li>
+      <li class="tile">
+        <span class="tile__bar tile__bar--accent" aria-hidden="true"></span>
+        <span class="tile__value" id="stat-best">—</span>
+        <span class="tile__label">Best round</span>
+      </li>
+    </ul>
+
+    <div class="chips" id="region-chips" role="group" aria-label="Region">
+      <button class="chip" type="button" data-region="all" aria-pressed="true">
+        <span class="chip__swatch" aria-hidden="true"></span>All</button>
+      <button class="chip" type="button" data-region="Africa" aria-pressed="false">
+        <span class="chip__swatch" aria-hidden="true"></span>Africa</button>
+      <button class="chip" type="button" data-region="Americas" aria-pressed="false">
+        <span class="chip__swatch" aria-hidden="true"></span>Americas</button>
+      <button class="chip" type="button" data-region="Asia" aria-pressed="false">
+        <span class="chip__swatch" aria-hidden="true"></span>Asia</button>
+      <button class="chip" type="button" data-region="Europe" aria-pressed="false">
+        <span class="chip__swatch" aria-hidden="true"></span>Europe</button>
+      <button class="chip" type="button" data-region="Oceania" aria-pressed="false">
+        <span class="chip__swatch" aria-hidden="true"></span>Oceania</button>
+    </div>
+
+    <nav class="home__foot">
+      <button class="btn btn--secondary" id="btn-progress" type="button">Progress</button>
+      <button class="btn btn--ghost icon-btn" id="btn-theme" type="button" aria-label="Switch to dark theme">
+        <svg class="icon" aria-hidden="true"><use href="#i-moon"></use></svg>
+      </button>
+    </nav>
+  </section>
+
+  <!-- ================= QUIZ ================= -->
+  <section class="screen screen--quiz" id="screen-quiz" hidden>
+    <header class="quizbar">
+      <button class="icon-btn" id="btn-quit" type="button" aria-label="Leave this round">
+        <svg class="icon" aria-hidden="true"><use href="#i-back"></use></svg>
+      </button>
+      <div class="meter" id="round-meter" role="progressbar"
+           aria-label="Round progress" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0">
+        <div class="meter__fill" id="round-meter-fill"></div>
+      </div>
+      <p class="quizbar__count" id="round-count">1 / 10</p>
+      <p class="quizbar__score" id="round-score">0</p>
+    </header>
+
+    <div class="card card--hero question">
+      <p class="question__type" id="question-type">Capital</p>
+      <h2 class="question__text" id="question-text"></h2>
+    </div>
+
+    <div class="opts" id="options" role="group" aria-labelledby="question-text"></div>
+
+    <div class="reveal" id="reveal" hidden>
+      <p class="reveal__banner" id="reveal-banner">
+        <svg class="icon reveal__icon" id="reveal-icon" aria-hidden="true"><use href="#i-check"></use></svg>
+        <span id="reveal-verdict">Correct</span>
+      </p>
+      <h3 class="reveal__country" id="reveal-country"></h3>
+      <dl class="facts" id="reveal-facts"></dl>
+      <p class="reveal__note" id="reveal-note" hidden></p>
+    </div>
+
+    <div class="actionbar">
+      <button class="btn btn--primary" id="btn-next" type="button" hidden>Next</button>
+    </div>
+  </section>
+
+  <!-- ================= SUMMARY ================= -->
+  <section class="screen screen--summary" id="screen-summary" hidden>
+    <h2 class="screen__title">Round complete</h2>
+    <p class="score" id="summary-score" tabindex="-1">0 / 10</p>
+    <p class="summary__line" id="summary-line"></p>
+    <ol class="review" id="summary-review"></ol>
+    <div class="actions">
+      <button class="btn btn--primary"   id="btn-again"            type="button">Play again</button>
+      <button class="btn btn--secondary" id="btn-summary-progress" type="button">Progress</button>
+      <button class="btn btn--secondary" id="btn-summary-home"     type="button">Home</button>
+    </div>
+  </section>
+
+  <!-- ================= PROGRESS ================= -->
+  <section class="screen screen--progress" id="screen-progress" hidden>
+    <header class="progress__head">
+      <h2 class="screen__title" tabindex="-1">Progress</h2>
+      <p class="progress__headline" id="progress-headline">0 of 197 countries mastered</p>
+      <p class="progress__sub"      id="progress-sub">0 of 981 facts learned</p>
+      <div class="segbar" id="progress-segbar" aria-hidden="true">
+        <span class="segbar__seg segbar__seg--mastered"></span>
+        <span class="segbar__seg segbar__seg--familiar"></span>
+        <span class="segbar__seg segbar__seg--seen"></span>
+        <span class="segbar__seg segbar__seg--new"></span>
+      </div>
+    </header>
+
+    <div class="regions" id="progress-regions"></div>
+
+    <div class="actions">
+      <button class="btn btn--secondary"   id="btn-progress-home" type="button">Home</button>
+      <button class="btn btn--destructive" id="btn-reset"         type="button">Reset progress</button>
+    </div>
+  </section>
+
+</main>
+
+<p class="status" id="live" role="status" aria-live="polite"></p>
+<p class="notice" id="notice" role="status" hidden>Progress will not be saved in this browser.</p>
+
+<dialog class="dialog" id="dialog-reset" aria-labelledby="dialog-reset-title">
+  <h2 class="dialog__title" id="dialog-reset-title">Reset all progress?</h2>
+  <p class="dialog__body">Every country goes back to unseen. This cannot be undone.</p>
+  <div class="dialog__actions">
+    <button class="btn btn--secondary"   id="btn-reset-cancel"  type="button">Cancel</button>
+    <button class="btn btn--destructive" id="btn-reset-confirm" type="button">Reset</button>
+  </div>
+</dialog>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/storage.js"></script>
+<script src="assets/js/questions.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

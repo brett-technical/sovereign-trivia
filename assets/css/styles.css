@@ -1,0 +1,1709 @@
+/* ==========================================================================
+   Sovereign — styles.css
+   "Vibrant & Block-based". One stylesheet, no build step, file:// safe.
+   Font faces come from assets/css/fonts.css — never restated here.
+   Class inventory is fixed by the build spec §6.4. Nothing outside it exists.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   CONTRAST LEDGER — every ratio below was computed with the WCAG 2.x
+   relative-luminance formula, not estimated. Thresholds: 4.5:1 normal text,
+   3:1 borders / meaningful non-text. Format: LIGHT / DARK.
+
+   TEXT ON SURFACES
+     foreground        on card / background / muted / hover / press
+                       17.85 / 16.40 / 16.34 / 16.76 / 15.58
+                       14.39 / 16.23 / 12.90 / 12.36 / 15.67
+     muted-foreground  on card / background / muted / hover
+                        7.58 /  6.96 /  6.94 /  7.11
+                        8.42 /  9.50 /  7.56 /  7.24
+     primary-text      on card / background / muted   6.70 / 6.16 / 6.13
+                                                      9.20 /10.38 / 8.25
+     primary-ink       on primary-surface / card      8.49 /10.36
+                                                     10.17 /11.68
+     success-ink       on success-surface / card      8.30 / 9.11
+                                                     10.46 /11.82
+     destructive-ink   on destructive-surface / card / background
+                                                      6.80 / 8.31 / 7.64
+                                                      8.58 / 8.74 / 9.86
+     secondary         on muted / card                5.22 / 5.70
+                                                      5.47 / 6.10
+
+   INK ON FILLED SLABS  (each doubles as that slab's currentColor edge)
+     on-primary/primary 5.17 / 7.44      on-secondary/secondary  5.70 / 6.94
+     on-accent/accent   8.31 /11.10      on-success/success      5.02 / 8.55
+     on-destructive/destructive          4.83 / 7.08
+
+   REGION CHIPS — region-on on Africa / Americas / Asia / Europe / Oceania / All
+      5.02 / 5.48 / 6.29 / 6.70 / 7.10 / 7.58
+     11.22 / 9.74 / 6.96 / 7.36 /10.14 / 9.50
+     Same hues as 12px swatches on card: 5.02-7.58 light, 6.17-9.94 dark.
+
+   BORDERS, RINGS, MEANINGFUL GRAPHICS  (need 3:1)
+     border-strong  on card / background / muted / hover / press
+                    17.85 /16.40 /16.34 /16.76 /15.58
+                     3.93 / 4.43 / 3.52 / 3.37 / 4.28
+     border-strong  on primary- / success- / destructive-surface
+                    (light: >12 everywhere)   dark: 3.42 / 3.47 / 3.85
+     border-muted   on card / background / muted / hover / press
+                     4.76 / 4.37 / 4.36 / 4.51 / 4.13
+                     3.70 / 4.17 / 3.32 / 3.18 / 4.03
+     ring           on card / background / muted   5.17 / 4.75 / 4.73
+                                                   9.20 /10.38 / 8.25
+     ring           on primary-/success-/destructive-surface
+                    4.38 / 4.46 / 4.23   |   8.02 / 8.14 / 9.03
+     primary  meter fill on muted track   4.73 / 5.85
+     primary  edge on primary-surface     4.24 / 5.69
+     success  edge on success-surface     4.57 / 8.43
+     destructive edge on destructive-surface  3.95 / 5.88
+     success / destructive icon on card   5.02 / 4.83   |   9.52 / 6.00
+     secondary / success segbar on muted track  5.22 / 4.59  |  5.47 / 8.54
+     dot on (primary) / dot off (border-muted) on card
+                    5.17 / 4.76   |   6.53 / 3.70
+
+   INERT (answered) OPTION — WCAG exempts inactive controls, but a player
+   rereading the four options must still read them:
+     muted-foreground on muted   6.94 / 7.56   (text threshold cleared anyway)
+     border-muted     on muted   4.36 / 3.32   (3:1 cleared, no exemption used)
+
+   SCRIM COMPOSITES
+     light scrim over background = #747B8A; dialog card on it   4.25
+     dark  scrim over background = #050913; foreground on it   17.26
+
+   DELIBERATELY EXEMPT — decoration that carries no information and no state:
+     --color-ledge on background        16.40 / 2.17
+       The ledge is the offset shadow under a slab. It is not a boundary; the
+       2px --color-border-strong edge is. If that edge is ever thinned to 1px
+       the block aesthetic AND 1.4.11 break together.
+     --color-accent 8px .tile__bar on card   2.15 / 9.94
+       Bounded on all sides by the tile's own border-strong edge, aria-hidden,
+       and duplicated by nothing — pure decoration. Accent is NEVER text, NEVER
+       an icon stroke, NEVER a meaningful line.
+     --color-border on card             1.19 / 1.32
+       Decorative hairline between fact rows only. Using it on any control is
+       a defect no matter how it looks.
+
+   ONE CORRECTION TO THE SPEC TOKEN TABLE
+     dark --color-border-muted was #5F6E8A. Recomputed: 2.89:1 on
+     --color-muted (#1B2740) and 2.77:1 on --color-surface-hover — below the
+     3:1 floor on the two surfaces it actually sits on (the inert .opt and the
+     disabled .btn). Corrected to #667894: 3.70 card / 4.17 background /
+     3.32 muted / 3.18 hover / 4.03 press. No exemption is now claimed for any
+     border anywhere. Light stays #64748B (already clears everything).
+   -------------------------------------------------------------------------- */
+
+
+/* ==========================================================================
+   1. TOKENS
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* --- surfaces --- */
+  --color-background: #EFF6FF;
+  --color-foreground: #0F172A;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #0F172A;
+  --color-muted: #F1F5FD;
+  --color-muted-foreground: #475569;
+  --color-surface-hover: #F4F8FF;
+  --color-surface-press: #E8F0FE;
+  --color-scrim: rgba(15, 23, 42, .55);
+
+  /* --- brand --- */
+  --color-primary: #2563EB;
+  --color-on-primary: #FFFFFF;
+  --color-primary-text: #1D4ED8;
+  --color-primary-surface: #DBEAFE;
+  --color-primary-ink: #1E3A8A;
+  --color-secondary: #7C3AED;
+  --color-on-secondary: #FFFFFF;
+  --color-accent: #F59E0B;
+  --color-on-accent: #0F172A;
+
+  /* --- result --- */
+  --color-success: #15803D;
+  --color-on-success: #FFFFFF;
+  --color-success-surface: #DCFCE7;
+  --color-success-ink: #14532D;
+  --color-destructive: #DC2626;
+  --color-on-destructive: #FFFFFF;
+  --color-destructive-surface: #FEE2E2;
+  --color-destructive-ink: #991B1B;
+
+  /* --- edges --- */
+  --color-border: #E4ECFC;        /* decorative hairline ONLY — never a control */
+  --color-border-strong: #0F172A; /* every interactive edge */
+  --color-border-muted: #667894;  /* quiet edges; see ledger correction */
+  --color-ring: #2563EB;
+  --color-ledge: #0F172A;
+
+  /* --- regions --- */
+  --region-africa: #B45309;
+  --region-americas: #047857;
+  --region-asia: #BE123C;
+  --region-europe: #1D4ED8;
+  --region-oceania: #6D28D9;
+  --region-all: #475569;
+  --region-on: #FFFFFF;
+
+  /* --- space --- */
+  --space-4: .25rem;
+  --space-8: .5rem;
+  --space-12: .75rem;
+  --space-16: 1rem;
+  --space-24: 1.5rem;
+  --space-32: 2rem;
+  --space-48: 3rem;
+  --space-64: 4rem;
+
+  /* --- radius --- */
+  --radius-4: 4px;
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-20: 20px;
+  --radius-28: 28px;
+  --radius-full: 999px;
+
+  /* --- edges + depth --- */
+  --border-2: 2px;
+  --border-3: 3px;
+  --ledge-1: 0 2px 0 0 var(--color-ledge);
+  --ledge-2: 0 4px 0 0 var(--color-ledge);
+  --ledge-3: 0 6px 0 0 var(--color-ledge);
+  --shadow-overlay: 0 24px 48px -16px rgba(15, 23, 42, .45);
+
+  /* --- motion --- */
+  --dur-press: 120ms;
+  --dur-state: 200ms;
+  --dur-enter: 280ms;
+  --dur-exit: 180ms;
+  --dur-meter: 360ms;
+  --ease-standard: cubic-bezier(.2, 0, 0, 1);
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-pop: cubic-bezier(.34, 1.56, .64, 1);
+
+  /* Shared slab transition. Colour and depth only — never a layout property. */
+  --t-slab:
+    background-color var(--dur-state) var(--ease-standard),
+    border-color var(--dur-state) var(--ease-standard),
+    color var(--dur-state) var(--ease-standard),
+    transform var(--dur-press) var(--ease-standard),
+    box-shadow var(--dur-press) var(--ease-standard);
+
+  /* --- type --- */
+  --font-display: 'Baloo 2', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Comic Neue', 'Comic Sans MS', system-ui, sans-serif;
+  --text-12: .75rem;
+  --text-14: .875rem;
+  --text-16: 1rem;
+  --text-18: 1.125rem;
+  --text-20: 1.25rem;
+  --text-28: 1.75rem;
+  --text-36: 2.25rem;
+  --text-44: 2.75rem;
+  --text-56: 3.5rem;
+
+  /* --- layout (overridden per breakpoint in §10) --- */
+  --gutter: var(--space-16);
+  --container: 100%;
+  --container-wide: 100%;
+  --gap-section: var(--space-32);
+  --card-pad: 1.25rem;      /* 20px */
+  --question-min: 5em;      /* 4 lines at line-height 1.25 */
+  --opt-min: 64px;
+  /* Height of the sticky .quizbar: 12 + 48 (icon button) + 12 + 2 border. Used
+     as scroll-padding so a focused control is never scrolled under it. */
+  --quizbar-h: 74px;
+}
+
+/* KEEP IN SYNC WITH THE [data-theme="dark"] BLOCK BELOW — there is no build
+   step, so these two lists are maintained by hand. Edit them as one unit. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --color-background: #0B1220;
+    --color-foreground: #E9EFFB;
+    --color-card: #151E33;
+    --color-card-foreground: #E9EFFB;
+    --color-muted: #1B2740;
+    --color-muted-foreground: #A8BAD6;
+    --color-surface-hover: #1E2A45;
+    --color-surface-press: #0E1626;
+    --color-scrim: rgba(3, 6, 14, .72);
+
+    --color-primary: #60A5FA;
+    --color-on-primary: #08111F;
+    --color-primary-text: #93C5FD;
+    --color-primary-surface: #17294A;
+    --color-primary-ink: #BFDBFE;
+    --color-secondary: #A78BFA;
+    --color-on-secondary: #140A2E;
+    --color-accent: #FBBF24;
+    --color-on-accent: #1A1206;
+
+    --color-success: #4ADE80;
+    --color-on-success: #052E16;
+    --color-success-surface: #0F2E1E;
+    --color-success-ink: #86EFAC;
+    --color-destructive: #F87171;
+    --color-on-destructive: #1A0606;
+    --color-destructive-surface: #3A1414;
+    --color-destructive-ink: #FCA5A5;
+
+    --color-border: #27334C;
+    --color-border-strong: #6B7C99;
+    --color-border-muted: #667894;
+    --color-ring: #93C5FD;
+    --color-ledge: #3D4C68;
+
+    --region-africa: #FBBF24;
+    --region-americas: #34D399;
+    --region-asia: #FB7185;
+    --region-europe: #60A5FA;
+    --region-oceania: #C4B5FD;
+    --region-all: #A8BAD6;
+    --region-on: #0B1220;
+
+    --shadow-overlay: 0 24px 48px -16px rgba(0, 0, 0, .70);
+  }
+}
+
+/* KEEP IN SYNC WITH THE @media BLOCK ABOVE. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-background: #0B1220;
+  --color-foreground: #E9EFFB;
+  --color-card: #151E33;
+  --color-card-foreground: #E9EFFB;
+  --color-muted: #1B2740;
+  --color-muted-foreground: #A8BAD6;
+  --color-surface-hover: #1E2A45;
+  --color-surface-press: #0E1626;
+  --color-scrim: rgba(3, 6, 14, .72);
+
+  --color-primary: #60A5FA;
+  --color-on-primary: #08111F;
+  --color-primary-text: #93C5FD;
+  --color-primary-surface: #17294A;
+  --color-primary-ink: #BFDBFE;
+  --color-secondary: #A78BFA;
+  --color-on-secondary: #140A2E;
+  --color-accent: #FBBF24;
+  --color-on-accent: #1A1206;
+
+  --color-success: #4ADE80;
+  --color-on-success: #052E16;
+  --color-success-surface: #0F2E1E;
+  --color-success-ink: #86EFAC;
+  --color-destructive: #F87171;
+  --color-on-destructive: #1A0606;
+  --color-destructive-surface: #3A1414;
+  --color-destructive-ink: #FCA5A5;
+
+  --color-border: #27334C;
+  --color-border-strong: #6B7C99;
+  --color-border-muted: #667894;
+  --color-ring: #93C5FD;
+  --color-ledge: #3D4C68;
+
+  --region-africa: #FBBF24;
+  --region-americas: #34D399;
+  --region-asia: #FB7185;
+  --region-europe: #60A5FA;
+  --region-oceania: #C4B5FD;
+  --region-all: #A8BAD6;
+  --region-on: #0B1220;
+
+  --shadow-overlay: 0 24px 48px -16px rgba(0, 0, 0, .70);
+}
+
+
+/* ==========================================================================
+   2. RESET
+   ========================================================================== */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* .quizbar is sticky at the top. Without this, scrolling a control into view
+     — which the browser does on every Tab — parks it under that bar, where it
+     is focused and invisible. */
+  scroll-padding-top: calc(var(--quizbar-h) + var(--space-8));
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  /* Structural guarantee: no element may exceed the viewport width. */
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3, p, dl, dd, figure { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+dt, dd { margin: 0; }
+
+button {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+}
+
+svg { display: block; }
+img { display: block; max-width: 100%; }
+
+/* Never overridden. This is the screen-switching mechanism. */
+[hidden] { display: none !important; }
+
+
+/* ==========================================================================
+   3. SHELL AND UTILITIES
+   ========================================================================== */
+
+.main {
+  width: 100%;
+  padding: var(--space-24) var(--gutter) var(--space-48);
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  /* `backwards`, not `both`: no filled transform survives the animation, so
+     nothing lingers as a containing block over the sticky quiz chrome. */
+  animation: screen-enter var(--dur-enter) var(--ease-out) backwards;
+}
+
+.screen--home { gap: var(--gap-section); }
+.screen--progress {
+  gap: var(--space-32);
+  max-width: var(--container-wide);
+}
+
+.screen__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-28);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--space-8);
+  left: var(--space-8);
+  z-index: 40;                 /* focus-only; the one layer above .notice */
+  padding: var(--space-12) var(--space-16);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-16);
+  color: var(--color-on-primary);
+  background: var(--color-primary);
+  border: var(--border-2) solid currentColor;
+  border-radius: var(--radius-12);
+  text-decoration: none;
+  transform: translateY(calc(-100% - var(--space-16)));
+  transition: transform var(--dur-state) var(--ease-out);
+}
+.skip-link:focus-visible { transform: none; }
+
+.sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* One icon family. 24px box, 2px stroke, no fill, no exceptions, no emoji. */
+.icon {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* #live. Present in the layout so it keeps announcing — NEVER display:none. */
+.status,
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Deliberately in normal flow, not pinned. A pinned advisory that persists
+   for the whole session would sit over the fourth option at 375px, and this
+   one appears exactly when the player can do nothing about it. Its z-index
+   allowance is unused; nothing here overlaps anything. */
+.notice {
+  width: 100%;
+  /* .notice is a sibling of .main, so it carries its own gutter. */
+  max-width: min(var(--container), calc(100% - 2 * var(--gutter)));
+  margin: 0 auto var(--space-48);
+  padding: var(--space-12) var(--space-16);
+  font-family: var(--font-body);
+  font-size: var(--text-14);
+  line-height: 1.5;
+  color: var(--color-primary-ink);
+  background: var(--color-primary-surface);
+  border: var(--border-2) solid var(--color-border-strong);
+  border-radius: var(--radius-12);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-12);
+}
+
+
+/* ==========================================================================
+   4. FOCUS
+   Zero-specificity so any component may add to it, none may remove it.
+   ========================================================================== */
+
+:where(a, button, [tabindex], summary, dialog):focus-visible {
+  outline: var(--border-3) solid var(--color-ring);
+  outline-offset: 3px;
+}
+
+
+/* ==========================================================================
+   5. CONTROLS
+   Slab rule: 2px edge, radius, hard ledge. Depth is offset, never blur.
+   Rest -> ledge-2. Hover -> ledge-3 + translateY(-2px). Press -> ledge-1 +
+   translateY(2px). The slab travels in transform only, so layout bounds and
+   everything around the control stay exactly where they were.
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  min-height: 56px;
+  padding: 0 var(--space-24);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-18);
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-card-foreground);
+  background: var(--color-card);
+  border: var(--border-2) solid var(--color-border-strong);
+  border-radius: var(--radius-16);
+  box-shadow: var(--ledge-2);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: var(--t-slab);
+}
+
+/* Filled variants: the on-colour doubles as the edge. Each on-colour already
+   clears 4.5:1 on its own fill, so the edge clears 3:1 in both themes from
+   one rule with no theme branching. */
+.btn--primary {
+  color: var(--color-on-primary);
+  background: var(--color-primary);
+  border-color: currentColor;
+}
+.btn--accent {
+  color: var(--color-on-accent);
+  background: var(--color-accent);
+  border-color: currentColor;
+}
+.btn--destructive {
+  color: var(--color-on-destructive);
+  background: var(--color-destructive);
+  border-color: currentColor;
+}
+.btn--secondary {
+  color: var(--color-card-foreground);
+  background: var(--color-card);
+  border-color: var(--color-border-strong);
+}
+.btn--ghost {
+  min-height: 44px;
+  color: var(--color-primary-text);
+  background: none;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.btn--cta {
+  width: 100%;
+  max-width: 24rem;
+  margin-inline: auto;
+  font-size: var(--text-20);
+}
+
+@media (hover: hover) {
+  .btn:hover:not([disabled]) {
+    transform: translateY(-2px);
+    box-shadow: var(--ledge-3);
+  }
+  .btn--secondary:hover:not([disabled]) { background: var(--color-surface-hover); }
+  .btn--ghost:hover:not([disabled]) {
+    background: var(--color-muted);
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.btn:active:not([disabled]) {
+  transform: translateY(2px);
+  box-shadow: var(--ledge-1);
+}
+.btn--ghost:active:not([disabled]) {
+  background: var(--color-surface-press);
+  transform: none;
+  box-shadow: none;
+}
+
+.btn[disabled] {
+  color: var(--color-muted-foreground);
+  background: var(--color-muted);
+  border-color: var(--color-border-muted);
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Square icon-only control. 48px clears the 44px target floor. */
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  min-height: 48px;
+  padding: 0;
+  color: var(--color-card-foreground);
+  background: var(--color-card);
+  border: var(--border-2) solid var(--color-border-strong);
+  border-radius: var(--radius-12);
+  box-shadow: var(--ledge-2);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: var(--t-slab);
+}
+
+.btn--ghost.icon-btn {
+  color: var(--color-primary-text);
+  background: none;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+@media (hover: hover) {
+  .icon-btn:hover {
+    transform: translateY(-2px);
+    background: var(--color-surface-hover);
+    box-shadow: var(--ledge-3);
+  }
+  .btn--ghost.icon-btn:hover {
+    background: var(--color-muted);
+    transform: none;
+    box-shadow: none;
+  }
+}
+.icon-btn:active {
+  transform: translateY(2px);
+  box-shadow: var(--ledge-1);
+}
+.btn--ghost.icon-btn:active {
+  background: var(--color-surface-press);
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* ==========================================================================
+   6. CARD
+   ========================================================================== */
+
+.card {
+  padding: var(--card-pad);
+  color: var(--color-card-foreground);
+  background: var(--color-card);
+  border: var(--border-2) solid var(--color-border-strong);
+  border-radius: var(--radius-20);
+  box-shadow: var(--ledge-2);
+}
+
+.card--hero {
+  border-radius: var(--radius-28);
+  box-shadow: var(--ledge-3);
+}
+
+
+/* ==========================================================================
+   7. HOME
+   ========================================================================== */
+
+.home__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-44);
+  line-height: 1.15;
+  letter-spacing: -.01em;
+}
+
+.home__tagline {
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  line-height: 1.5;
+  color: var(--color-muted-foreground);
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-12);
+}
+
+/* Non-interactive: no hover, no cursor:pointer, no focus ring. */
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-4);
+  min-width: 0;
+  padding: calc(8px + var(--space-16)) var(--space-4) var(--space-16);
+  text-align: center;
+  background: var(--color-card);
+  border: var(--border-2) solid var(--color-border-strong);
+  border-radius: var(--radius-20);
+  box-shadow: var(--ledge-2);
+  overflow: hidden;
+}
+
+.tile__bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+}
+.tile__bar--primary { background: var(--color-primary); }
+.tile__bar--secondary { background: var(--color-secondary); }
+/* Accent's one permitted structural use, alongside the Play CTA. Decorative,
+   aria-hidden, bounded by the tile's own edge. Never text, never a stroke. */
+.tile__bar--accent { background: var(--color-accent); }
+
+.tile__value {
+  min-width: 4ch;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-36);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.tile__label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-14);
+  line-height: 1.3;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+  overflow-wrap: anywhere;  /* three tiles across a 375px viewport is tight */
+}
+
+
+/* --- region chips --------------------------------------------------------- */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.chip {
+  --hue: var(--region-all);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  min-height: 44px;
+  padding: 10px 14px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-14);
+  line-height: 1.2;
+  color: var(--color-card-foreground);
+  background: var(--color-card);
+  border: var(--border-2) solid var(--color-border-muted);
+  border-radius: var(--radius-12);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: var(--t-slab);
+}
+
+.chip[data-region="all"]      { --hue: var(--region-all); }
+.chip[data-region="Africa"]   { --hue: var(--region-africa); }
+.chip[data-region="Americas"] { --hue: var(--region-americas); }
+.chip[data-region="Asia"]     { --hue: var(--region-asia); }
+.chip[data-region="Europe"]   { --hue: var(--region-europe); }
+.chip[data-region="Oceania"]  { --hue: var(--region-oceania); }
+
+/* aria-hidden — the word carries the meaning, the square is reinforcement. */
+.chip__swatch {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  background: var(--hue);
+  border-radius: var(--radius-4);
+}
+
+.chip[aria-pressed="true"] {
+  color: var(--region-on);
+  background: var(--hue);
+  border-color: currentColor;
+  box-shadow: var(--ledge-1);
+}
+.chip[aria-pressed="true"] .chip__swatch { background: var(--region-on); }
+
+@media (hover: hover) {
+  .chip:hover {
+    background: var(--color-surface-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--ledge-1);
+  }
+  /* Selected chips keep their fill — depth changes, the wash never does. */
+  .chip[aria-pressed="true"]:hover {
+    background: var(--hue);
+    box-shadow: var(--ledge-2);
+  }
+}
+.chip:active,
+.chip[aria-pressed="true"]:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.home__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+
+/* ==========================================================================
+   8. QUIZ
+   ========================================================================== */
+
+.quizbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: var(--space-12);
+  margin-inline: calc(-1 * var(--gutter));
+  padding: var(--space-12) var(--gutter);
+  background: var(--color-background);
+  border-bottom: var(--border-2) solid var(--color-border-muted);
+}
+
+.quizbar__count,
+.quizbar__score {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+.quizbar__count {
+  min-width: 7ch;
+  font-size: var(--text-16);
+  color: var(--color-muted-foreground);
+}
+.quizbar__score {
+  min-width: 2ch;
+  font-size: var(--text-20);
+  color: var(--color-primary-text);
+}
+
+.meter {
+  --p: 0;              /* app.js overwrites this inline; 0 keeps it sane before */
+  height: 12px;
+  min-width: 48px;
+  background: var(--color-muted);
+  border: var(--border-2) solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+/* Scale, never animate width. app.js sets style.setProperty('--p', n/total). */
+.meter__fill {
+  width: 100%;
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: inherit;
+  transform: scaleX(var(--p, 0));
+  transform-origin: left center;
+  transition: transform var(--dur-meter) var(--ease-out);
+}
+
+
+/* --- the question --------------------------------------------------------- */
+
+.question {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.question__type {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-14);
+  line-height: 1.3;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+/* Reserved height so consecutive questions never shift the option stack.
+   The industry stem is the longest type; the block grows past the reserve
+   rather than clipping. */
+.question__text {
+  min-height: var(--question-min);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-28);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+
+/* --- the options — the product's centre of gravity ------------------------ */
+
+.opts {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-12);
+}
+
+.opt {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-12);
+  min-height: var(--opt-min);
+  width: 100%;
+  padding: var(--space-12) var(--space-16);
+  text-align: left;
+  background: var(--color-card);
+  border: var(--border-2) solid var(--color-border-strong);
+  border-radius: var(--radius-16);
+  box-shadow: var(--ledge-2);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: var(--t-slab);
+}
+
+.opt__key {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-16);
+  line-height: 1;
+  color: var(--color-foreground);
+  background: var(--color-muted);
+  border-radius: var(--radius-8);
+  transition: background-color var(--dur-state) var(--ease-standard),
+              color var(--dur-state) var(--ease-standard);
+}
+
+/* Comic Neue at 18px+: 'Bandar Seri Begawan' / 'Bandar Lampung' / 'Bandung'
+   need letterforms this distinct. The slab grows to fit, it never clips. */
+.opt__label {
+  min-width: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--text-18);
+  line-height: 1.3;
+  color: var(--color-card-foreground);
+  overflow-wrap: anywhere;
+}
+
+.opt__mark { visibility: hidden; }
+
+@media (hover: hover) {
+  .opt:not([aria-disabled="true"]):hover {
+    background: var(--color-surface-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--ledge-3);
+  }
+  .opt:not([aria-disabled="true"]):hover .opt__key {
+    color: var(--color-primary-ink);
+    background: var(--color-primary-surface);
+  }
+}
+.opt:not([aria-disabled="true"]):active {
+  background: var(--color-surface-press);
+  transform: translateY(2px);
+  box-shadow: var(--ledge-1);
+}
+
+/* Chosen, before the result paints. */
+.opt[data-selected] {
+  color: var(--color-primary-ink);
+  background: var(--color-primary-surface);
+  border-color: var(--color-primary);
+  box-shadow: var(--ledge-2);
+}
+.opt[data-selected] .opt__label { color: var(--color-primary-ink); }
+.opt[data-selected] .opt__key {
+  color: var(--color-on-primary);
+  background: var(--color-primary);
+}
+
+/* Answered. The `disabled` attribute is deliberately never used — a screen
+   reader user must be able to walk back over all four options. The phase
+   guard in app.js is what rejects the click. */
+.opt[aria-disabled="true"] {
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Inert: flattened, but still fully legible (6.94 light / 7.56 dark). */
+.opt[aria-disabled="true"]:not([data-result]) {
+  background: var(--color-muted);
+  border-color: var(--color-border-muted);
+  box-shadow: none;
+}
+.opt[aria-disabled="true"]:not([data-result]) .opt__label {
+  color: var(--color-muted-foreground);
+}
+.opt[aria-disabled="true"]:not([data-result]) .opt__key {
+  color: var(--color-muted-foreground);
+  background: var(--color-muted);
+}
+
+/* Result. Three redundant channels: fill + edge, the check/x glyph, and the
+   sentence announced through #live. Colour is never the only signal. */
+.opt[data-result="correct"] {
+  background: var(--color-success-surface);
+  border-color: var(--color-success);
+  box-shadow: var(--ledge-2);
+  animation: opt-pop 260ms var(--ease-pop) 1;
+}
+.opt[data-result="correct"] .opt__label { color: var(--color-success-ink); }
+.opt[data-result="correct"] .opt__key {
+  color: var(--color-on-success);
+  background: var(--color-success);
+}
+.opt[data-result="correct"] .opt__mark {
+  visibility: visible;
+  color: var(--color-success);
+}
+
+.opt[data-result="wrong"] {
+  background: var(--color-destructive-surface);
+  border-color: var(--color-destructive);
+  box-shadow: var(--ledge-2);
+  animation: opt-nudge 80ms var(--ease-standard) 2;
+}
+.opt[data-result="wrong"] .opt__label { color: var(--color-destructive-ink); }
+.opt[data-result="wrong"] .opt__key {
+  color: var(--color-on-destructive);
+  background: var(--color-destructive);
+}
+.opt[data-result="wrong"] .opt__mark {
+  visibility: visible;
+  color: var(--color-destructive);
+}
+
+
+/* --- the reveal ----------------------------------------------------------- */
+
+/* The accent is keyed off the banner state. app.js may carry data-result on
+   #reveal or on #reveal-banner; both are honoured, and correct is the
+   default, so the panel is never unstyled. */
+.reveal {
+  --reveal-accent: var(--color-success);
+  --reveal-ink: var(--color-success-ink);
+  padding: var(--card-pad);
+  color: var(--color-card-foreground);
+  background: var(--color-card);
+  border: var(--border-2) solid var(--color-border-strong);
+  border-left: 6px solid var(--reveal-accent);
+  border-radius: var(--radius-20);
+  box-shadow: var(--ledge-2);
+}
+.reveal[data-result="wrong"],
+.reveal__banner[data-result="wrong"] {
+  --reveal-accent: var(--color-destructive);
+  --reveal-ink: var(--color-destructive-ink);
+}
+.reveal:has(.reveal__banner[data-result="wrong"]) {
+  --reveal-accent: var(--color-destructive);
+  --reveal-ink: var(--color-destructive-ink);
+}
+
+.reveal__banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-20);
+  line-height: 1.2;
+  color: var(--reveal-ink);
+}
+.reveal__icon { color: inherit; }
+
+.reveal__country {
+  margin-top: var(--space-8);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-28);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.facts { margin-top: var(--space-16); }
+
+.fact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-12) 0;
+  border-top: var(--border-2) solid var(--color-border);
+}
+.fact:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.fact__label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-14);
+  line-height: 1.3;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+/* Raw display strings from the record — 11 capitals and 8 language strings
+   carry qualifiers, and this is where those qualifiers earn their keep. */
+.fact__value {
+  min-width: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-16);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.fact[data-asked="true"] .fact__label { color: var(--color-primary-text); }
+.fact[data-asked="true"] .fact__value {
+  font-weight: 700;
+  color: var(--color-card-foreground);
+}
+
+.reveal__note {
+  margin-top: var(--space-16);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-16);
+  line-height: 1.5;
+  color: var(--color-muted-foreground);
+  overflow-wrap: anywhere;
+}
+
+
+/* --- the action bar ------------------------------------------------------- */
+
+/* In flow at every width, never sticky. A `position: sticky; bottom: 0` bar
+   floats over whatever sits at the foot of the viewport for every scroll
+   position above its resting place, and no amount of padding moves that
+   content out from under it: at 375x667 it hid the fourth option entirely,
+   including the correct answer and the focus ring on it. app.js focuses Next
+   the moment an answer lands, which scrolls it into view on its own. */
+.actionbar {
+  display: flex;
+  margin-inline: calc(-1 * var(--gutter));
+  padding: var(--space-12) var(--gutter);
+  background: var(--color-background);
+  border-top: var(--border-2) solid var(--color-border-muted);
+}
+.actionbar .btn { width: 100%; }
+
+/* Progressive enhancement: collapse the bar while Next is hidden. Without
+   :has() the fallback is a 26px strip of background — harmless either way. */
+.actionbar:has(.btn[hidden]) {
+  padding: 0;
+  background: none;
+  border-top: 0;
+}
+
+
+/* ==========================================================================
+   9. SUMMARY
+   ========================================================================== */
+
+.score {
+  min-width: 6ch;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-44);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.score:focus-visible {
+  outline: var(--border-3) solid var(--color-ring);
+  outline-offset: 3px;
+}
+
+.summary__line {
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  line-height: 1.5;
+  color: var(--color-muted-foreground);
+}
+
+.review {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.review__row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "mark country type"
+    "mark answer  answer";
+  align-items: center;
+  gap: var(--space-4) var(--space-12);
+  padding: var(--space-12);
+  background: var(--color-card);
+  border: var(--border-2) solid var(--color-border-muted);
+  border-radius: var(--radius-12);
+}
+
+.review__mark {
+  grid-area: mark;
+  align-self: center;
+  color: var(--color-success);
+}
+.review__row[data-result="wrong"] .review__mark { color: var(--color-destructive); }
+
+.review__country {
+  grid-area: country;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-18);
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.review__type {
+  grid-area: type;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-14);
+  line-height: 1.3;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-muted-foreground);
+}
+
+.review__answer {
+  grid-area: answer;
+  min-width: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  line-height: 1.4;
+  color: var(--color-muted-foreground);
+  overflow-wrap: anywhere;
+}
+
+
+/* ==========================================================================
+   10. PROGRESS
+   ========================================================================== */
+
+.progress__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.progress__headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-28);
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+  text-wrap: balance;
+}
+
+.progress__sub {
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-muted-foreground);
+}
+
+/* Widths are set inline by app.js in the order mastered, familiar, seen, new.
+   Width is never transitioned — §11.1 bans animating it. */
+.segbar {
+  display: flex;
+  height: 16px;
+  margin-top: var(--space-8);
+  background: var(--color-muted);
+  border: var(--border-2) solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.segbar__seg {
+  display: block;
+  height: 100%;
+  width: 0;
+  flex: none;
+}
+.segbar__seg--mastered { background: var(--color-success); }
+.segbar__seg--familiar { background: var(--color-primary); }
+.segbar__seg--seen     { background: var(--color-secondary); }
+.segbar__seg--new      { background: var(--color-muted); }
+
+.regions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;   /* an expanded region must not stretch its neighbours */
+  gap: var(--space-16);
+}
+
+.region {
+  --hue: var(--region-all);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--space-4) var(--space-4) 0;
+  background: var(--color-card);
+  border: var(--border-2) solid var(--color-border-strong);
+  border-radius: var(--radius-20);
+  box-shadow: var(--ledge-2);
+}
+
+.region[data-region="Africa"]   { --hue: var(--region-africa); }
+.region[data-region="Americas"] { --hue: var(--region-americas); }
+.region[data-region="Asia"]     { --hue: var(--region-asia); }
+.region[data-region="Europe"]   { --hue: var(--region-europe); }
+.region[data-region="Oceania"]  { --hue: var(--region-oceania); }
+
+.region__head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "swatch name  chev"
+    "swatch count chev";
+  align-items: center;
+  gap: var(--space-4) var(--space-12);
+  min-height: 56px;
+  width: 100%;
+  padding: var(--space-12);
+  text-align: left;
+  color: var(--color-card-foreground);
+  background: none;
+  border-radius: var(--radius-16);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color var(--dur-state) var(--ease-standard);
+}
+/* Inset ring: the head is flush inside the region card, so a +3px offset
+   would land on or past the card edge. 3px of ring is still 3px of ring. */
+.region__head:focus-visible { outline-offset: -3px; }
+
+@media (hover: hover) {
+  .region__head:hover { background: var(--color-surface-hover); }
+}
+.region__head:active { background: var(--color-surface-press); }
+
+.region__swatch {
+  grid-area: swatch;
+  align-self: center;
+  width: 12px;
+  height: 12px;
+  flex: none;
+  background: var(--hue);
+  border-radius: var(--radius-4);
+}
+
+.region__name {
+  grid-area: name;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-20);
+  line-height: 1.2;
+}
+
+.region__count {
+  grid-area: count;
+  min-width: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-14);
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-muted-foreground);
+}
+
+.region__chev {
+  grid-area: chev;
+  align-self: center;
+  color: var(--color-muted-foreground);
+  transition: transform var(--dur-state) var(--ease-standard);
+}
+.region__head[aria-expanded="true"] .region__chev { transform: rotate(180deg); }
+
+.region .segbar {
+  margin: 0 var(--space-12) var(--space-12);
+  height: 12px;
+}
+
+.region__body { padding: 0 var(--space-12) var(--space-12); }
+
+/* The spec asked for 1/2/3/4 fixed columns here, but .countries is nested
+   inside .regions, which is itself 3 columns at >=1024. Measured: a region
+   card is 309px wide at 1024 and 362px at 1440, so three country columns
+   come out at 86px each and every name shreds into a vertical stack. A row
+   needs ~11rem for the name plus five dots, so the count is derived from the
+   card's real width instead. It resolves to 1 column at 375, matching the
+   spec, and widens by itself if a region card ever gets room. */
+.countries {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: var(--space-8);
+}
+
+/* Band is carried by the word in .country__band and by the dot count, never
+   by colour alone. The edge hue is reinforcement.
+   Flex-wrap rather than a fixed grid: the countries list is nested three
+   columns deep at >=1024, so a cell can get narrow. Wrapping degrades to
+   name / dots / band stacked instead of overflowing the card. */
+.country {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4) var(--space-8);
+  min-width: 0;
+  padding: var(--space-8) var(--space-12);
+  background: var(--color-muted);
+  border: var(--border-2) solid var(--color-border-muted);
+  border-left-width: 6px;
+  border-radius: var(--radius-12);
+}
+.country[data-band="new"]       { border-left-color: var(--color-border-muted); }
+.country[data-band="seen"]      { border-left-color: var(--color-secondary); }
+.country[data-band="familiar"]  { border-left-color: var(--color-primary); }
+.country[data-band="mastered"]  { border-left-color: var(--color-success); }
+
+.country__name {
+  flex: 1 1 6rem;
+  min-width: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--text-16);
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+/* Full basis pushes the band word onto its own row. No `order` anywhere, so
+   visual, DOM and screen-reader order stay identical. */
+.country__band {
+  flex: 1 1 100%;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-12);
+  line-height: 1.3;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+.dots {
+  flex: 0 1 auto;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: 100%;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  flex: none;
+  background: none;
+  border: var(--border-2) solid var(--color-border-muted);
+  border-radius: var(--radius-4);
+}
+.dot.is-on {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+
+/* ==========================================================================
+   11. DIALOG
+   ========================================================================== */
+
+.dialog {
+  width: calc(100% - 2 * var(--gutter));
+  max-width: 420px;
+  margin: auto;
+  padding: var(--space-24);
+  color: var(--color-card-foreground);
+  background: var(--color-card);
+  border: var(--border-2) solid var(--color-border-strong);
+  border-radius: var(--radius-20);
+  box-shadow: var(--shadow-overlay);
+}
+
+/* ::backdrop did not inherit custom properties from the originating element
+   in older engines, so each rule carries its literal fallback. The values are
+   the --color-scrim token verbatim; no new colour is introduced. */
+.dialog::backdrop { background: var(--color-scrim, rgba(15, 23, 42, .55)); }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .dialog::backdrop {
+    background: var(--color-scrim, rgba(3, 6, 14, .72));
+  }
+}
+:root[data-theme="dark"] .dialog::backdrop {
+  background: var(--color-scrim, rgba(3, 6, 14, .72));
+}
+
+.dialog__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-28);
+  line-height: 1.2;
+}
+
+.dialog__body {
+  margin-top: var(--space-12);
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  line-height: 1.5;
+  color: var(--color-muted-foreground);
+}
+
+.dialog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-12);
+  margin-top: var(--space-24);
+}
+
+
+/* ==========================================================================
+   12. ANIMATION
+   Only transform and opacity. Never width, height, top or left.
+   ========================================================================== */
+
+@keyframes screen-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes opt-pop {
+  0%, 100% { transform: none; }
+  50%      { transform: scale(1.03); }
+}
+
+@keyframes opt-nudge {
+  0%, 100% { transform: none; }
+  25%      { transform: translateX(-6px); }
+  75%      { transform: translateX(6px); }
+}
+
+
+/* ==========================================================================
+   13. RESPONSIVE — mobile first, min-width only.
+   No overflow-x:hidden anywhere. Width is contained structurally: every
+   flex/grid text child sets min-width:0, long strings set
+   overflow-wrap:anywhere, and .chips wraps before it shrinks.
+   ========================================================================== */
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: var(--space-24);
+    --container: 680px;
+    --container-wide: 680px;
+    --gap-section: 2.5rem;
+    --card-pad: var(--space-24);
+    --question-min: 3.75em;   /* 3 lines at --text-36 */
+    --opt-min: 72px;
+  }
+
+  .wordmark { font-size: var(--text-56); }
+  .screen__title { font-size: var(--text-36); }
+  .home__tagline { font-size: var(--text-18); }
+  .question__text { font-size: var(--text-36); }
+  .opt__label { font-size: var(--text-20); }
+  .opt__key { font-size: var(--text-18); }
+  .btn { font-size: var(--text-20); }
+  .btn--cta { min-height: 60px; }
+  .chip { font-size: var(--text-16); }
+  .meter { height: 16px; }
+  .quizbar__count { font-size: var(--text-18); }
+  .tile__value { font-size: var(--text-44); }
+  .score { font-size: var(--text-56); }
+  .progress__headline { font-size: var(--text-36); }
+  .progress__sub,
+  .summary__line,
+  .fact__value,
+  .reveal__note { font-size: var(--text-18); }
+
+  .fact {
+    grid-template-columns: 8rem minmax(0, 1fr);
+    gap: var(--space-16);
+    align-items: baseline;
+  }
+
+  .tile { padding-inline: var(--space-12); }
+
+  .regions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --gutter: var(--space-32);
+    --container: 880px;
+    --container-wide: 1120px;
+    --gap-section: var(--space-48);
+    --card-pad: var(--space-32);
+    --opt-min: 88px;
+  }
+
+  /* DOM order is 1,2,3,4 and the grid never reorders, so visual, DOM and
+     screen-reader order agree in both layouts. minmax(0,1fr) is what stops a
+     long country name forcing an overflow; grid-auto-rows:1fr keeps all four
+     slabs level when one label wraps. */
+  .opts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+    gap: var(--space-16);
+  }
+
+  .actionbar {
+    justify-content: flex-end;
+    margin-inline: 0;
+    padding: 0;
+    background: none;
+    border-top: 0;
+  }
+  .actionbar .btn { width: auto; min-width: 12rem; }
+
+  .regions { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1440px) {
+  :root { --gutter: 2.5rem; }
+
+  .question__text { font-size: var(--text-44); }
+}
+
+
+/* ==========================================================================
+   14. REDUCED MOTION
+   Token overrides AND the blanket guard, because tokens alone miss keyframes.
+   Hover and press keep their colour and ledge change, so feedback survives
+   with zero motion. The pop and the nudge vanish and nothing is lost: icon,
+   colour and the #live sentence all still fire.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-press: .01ms;
+    --dur-state: .01ms;
+    --dur-enter: .01ms;
+    --dur-exit: .01ms;
+    --dur-meter: .01ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .opt,
+  .btn,
+  .chip,
+  .icon-btn { transform: none !important; }
+}
+
+
+/* ==========================================================================
+   15. FORCED / INCREASED CONTRAST — progressive enhancement only.
+   Nothing here is load-bearing for any state.
+   ========================================================================== */
+
+@media (prefers-contrast: more) {
+  .chip,
+  .review__row,
+  .country { border-color: var(--color-border-strong); }
+  .fact { border-top-color: var(--color-border-muted); }
+}
