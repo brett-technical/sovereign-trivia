@@ -16,7 +16,7 @@ dest = ROOT / "assets" / "js" / "data.js"
 countries = json.loads(src.read_text(encoding="utf-8"))
 
 required = ("region","country","capital","languages","currency","population",
-            "industries","accepted_capitals")
+            "industries","accepted_capitals","iso2")
 for c in countries:
     missing = [k for k in required if k not in c or not c[k]]
     if missing:

@@ -26,6 +26,19 @@
   var btnPlay, btnProgress, btnTheme, chipBox, statSeen, statMastered, statBest;
   var btnQuit, meter, countEl, scoreEl, qType, qText, optionsBox;
   var revealBox, banner, revealIcon, verdict, revealCountry, factsEl, noteEl, btnNext;
+  var qFlag, revealFlag, streakEl, quizScreen;
+  var streak = 0;
+
+  /* country name -> ISO2, for flag filenames. Built from the same corpus the
+   * engine reads, so it cannot drift from it. */
+  var FLAG_OF = (function () {
+    var map = {};
+    var rows = window.COUNTRY_DATA || [];
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i] && rows[i].country && rows[i].iso2) map[rows[i].country] = rows[i].iso2;
+    }
+    return map;
+  })();
   var summaryScore, summaryLine, summaryReview, btnAgain, btnSummaryProgress, btnSummaryHome;
   var progHeadline, progSub, progSegbar, regionsBox, progTitle;
   var btnProgressHome, btnReset, dialog, btnResetCancel, btnResetConfirm;
@@ -64,6 +77,10 @@
     revealCountry = el('reveal-country');
     factsEl = el('reveal-facts');
     noteEl = el('reveal-note');
+    qFlag = el('question-flag');
+    revealFlag = el('reveal-flag');
+    streakEl = el('round-streak');
+    quizScreen = el('screen-quiz');
     btnNext = el('btn-next');
 
     summaryScore = el('summary-score');
@@ -265,7 +282,9 @@
     var fresh = 0;
     qs.forEach(function (q) { if (!already[q.countryKey]) fresh += 1; });
 
-    round = { qs: qs, at: 0, correct: 0, results: [], fresh: fresh };
+    round = { qs: qs, at: 0, correct: 0, results: [], fresh: fresh, bestStreak: 0 };
+    streak = 0;
+    paintStreak();
     show('quiz');
     renderQuestion();
   }
@@ -283,12 +302,43 @@
     return b;
   }
 
+  /* Relative path so it resolves the same from file:// and from a server.
+   * An <img> is fine under file:// — only fetch and modules are blocked. */
+  function flagSrc(code) { return 'assets/flags/' + code + '.svg'; }
+
+  function setFlag(img, code, label) {
+    if (!code) { img.hidden = true; img.removeAttribute('src'); img.alt = ''; return; }
+    img.src = flagSrc(code);
+    /* Decorative when the country is already named beside it; described when
+     * the flag itself is the question. */
+    img.alt = label || '';
+    img.hidden = false;
+  }
+
+  function paintStreak() {
+    if (streak < 3) { streakEl.hidden = true; streakEl.textContent = ''; return; }
+    streakEl.textContent = streak + ' in a row';
+    streakEl.hidden = false;
+  }
+
   function renderQuestion() {
     phase = 'question';
     var q = round.qs[round.at];
 
     qType.textContent = Questions.TYPE_LABELS[q.type] || q.type;
     qText.textContent = q.prompt;
+
+    /* Continent identity: CSS reads this to tint the screen using the
+     * --region-* tokens that already exist. */
+    quizScreen.setAttribute('data-region', q.region || 'All');
+
+    if (q.media && q.media.kind === 'flag') {
+      /* The flag IS the question, so it carries a real description rather
+       * than naming the country the player is being asked to identify. */
+      setFlag(qFlag, q.media.code, 'The flag to identify');
+    } else {
+      setFlag(qFlag, null);
+    }
 
     /* Rebuilt, not reused: a stale option node is detached, so a click that
      * arrives late (held Enter, slow double-click) cannot reach the handler. */
@@ -343,6 +393,8 @@
     setUse(revealIcon, ok ? 'i-check' : 'i-x');
     verdict.textContent = ok ? 'Correct' : 'Not quite';
     revealCountry.textContent = r.country;
+    /* Named right beside it, so the flag is decorative here. */
+    setFlag(revealFlag, r.flag, '');
 
     clear(factsEl);
     r.facts.forEach(function (f) {
@@ -390,10 +442,13 @@
 
     phase = 'reveal';
     if (g.correct) round.correct += 1;
+    streak = g.correct ? streak + 1 : 0;
+    if (streak > round.bestStreak) round.bestStreak = streak;
     round.results.push({ q: q, correct: g.correct });
 
     paintOptions(index, g.answerIndex);
     buildReveal(q, g.correct);
+    paintStreak();
     scoreEl.textContent = String(round.correct);
     setMeter(round.at + 1, round.qs.length);
 
@@ -478,6 +533,18 @@
     var li = document.createElement('li');
     li.className = 'country';
     li.setAttribute('data-band', rec.band);
+
+    var iso = FLAG_OF[name];
+    if (iso) {
+      var img = document.createElement('img');
+      img.className = 'country__flag';
+      img.src = flagSrc(iso);
+      img.alt = '';               /* the name is right beside it */
+      img.width = 28; img.height = 28;
+      img.loading = 'lazy';       /* 197 at once otherwise */
+      img.decoding = 'async';
+      li.appendChild(img);
+    }
     li.appendChild(span('country__name', name));
 
     var dots = decorative('dots');

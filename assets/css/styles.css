@@ -1707,3 +1707,118 @@ img { display: block; max-width: 100%; }
   .country { border-color: var(--color-border-strong); }
   .fact { border-top-color: var(--color-border-muted); }
 }
+
+/* ==========================================================================
+   14. FLAGS, CONTINENT TINT, STREAK
+   Appended after the base system so these rules win on specificity ties
+   without editing the blocks above.
+   ========================================================================== */
+
+/* --- Flags ---------------------------------------------------------------
+   Circular SVGs from circle-flags. They carry their own artwork, so they get
+   a ring rather than a border — a hard border on a circular flag reads as a
+   coin. The ring uses the same border token so it stays visible in both
+   themes. Sizes are fixed in the markup too, which reserves the space and
+   keeps cumulative layout shift at zero. */
+
+.question__flag,
+.reveal__flag,
+.country__flag {
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--color-border);
+  background: var(--color-muted);   /* while decoding */
+  flex: none;
+  object-fit: cover;
+}
+
+.question__flag {
+  width: clamp(120px, 34vw, 180px);
+  height: clamp(120px, 34vw, 180px);
+  align-self: center;
+  margin-block: var(--space-8);
+  box-shadow: 0 0 0 3px var(--color-border), 0 6px 0 color-mix(in srgb, var(--color-foreground) 14%, transparent);
+}
+
+.reveal__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-top: var(--space-8);
+}
+
+.reveal__flag { width: 56px; height: 56px; }
+
+/* The name kept its own type scale when it moved inside .reveal__head. */
+.reveal__head .reveal__country { margin-top: 0; }
+
+.country__flag { width: 28px; height: 28px; }
+
+/* The progress row gains a leading flag, so it becomes a 3-track grid. */
+.country {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+/* Unmastered countries read as unfinished business rather than decoration.
+   Colour is never the only signal — .country__band still spells out the word. */
+.country[data-band="new"] .country__flag { filter: grayscale(1); opacity: .45; }
+.country[data-band="seen"] .country__flag { filter: grayscale(.6); opacity: .75; }
+
+/* --- Continent tint ------------------------------------------------------
+   The quiz screen picks up the colour of the continent being asked about,
+   using the --region-* tokens that already exist for both themes. A wash at
+   this strength sits far below any text, so no contrast pair changes. */
+
+.screen--quiz {
+  --tint: var(--region-all);
+  position: relative;
+  background-image:
+    radial-gradient(120% 70% at 50% -10%,
+      color-mix(in srgb, var(--tint) 16%, transparent) 0%,
+      transparent 62%);
+  background-repeat: no-repeat;
+  transition: background-image var(--dur-state) var(--ease-standard);
+}
+
+.screen--quiz[data-region="Africa"]   { --tint: var(--region-africa); }
+.screen--quiz[data-region="Americas"] { --tint: var(--region-americas); }
+.screen--quiz[data-region="Asia"]     { --tint: var(--region-asia); }
+.screen--quiz[data-region="Europe"]   { --tint: var(--region-europe); }
+.screen--quiz[data-region="Oceania"]  { --tint: var(--region-oceania); }
+
+/* The progress meter and question card border echo the same continent. */
+.screen--quiz[data-region] .meter__fill { background: var(--tint); }
+.screen--quiz[data-region] .card--hero  { border-color: color-mix(in srgb, var(--tint) 38%, var(--color-border)); }
+
+/* Browsers without color-mix get the flat token — no tint, nothing broken. */
+@supports not (background: color-mix(in srgb, red 50%, blue)) {
+  .screen--quiz { background-image: none; }
+  .screen--quiz[data-region] .card--hero { border-color: var(--color-border); }
+}
+
+/* --- Streak --------------------------------------------------------------
+   Appears only from three correct in a row, so it reads as an event rather
+   than a permanent counter. aria-live is off in the markup: the result is
+   already announced, and a second live region would talk over it. */
+
+.streak {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-14);
+  line-height: 1;
+  white-space: nowrap;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--color-on-accent);
+  background: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .streak { animation: streak-in 220ms var(--ease-pop) both; }
+  @keyframes streak-in {
+    from { transform: scale(.86); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+  }
+}
