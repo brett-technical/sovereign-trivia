@@ -93,11 +93,14 @@
       </div>
       <p class="quizbar__count" id="round-count">1 / 10</p>
       <p class="quizbar__score" id="round-score">0</p>
+      <p class="streak" id="round-streak" hidden aria-live="off"></p>
     </header>
 
     <div class="card card--hero question">
       <p class="question__type" id="question-type">Capital</p>
       <h2 class="question__text" id="question-text"></h2>
+      <img class="question__flag" id="question-flag" alt="" hidden
+           width="180" height="180" decoding="async">
     </div>
 
     <div class="opts" id="options" role="group" aria-labelledby="question-text"></div>
@@ -107,7 +110,11 @@
         <svg class="icon reveal__icon" id="reveal-icon" aria-hidden="true"><use href="#i-check"></use></svg>
         <span id="reveal-verdict">Correct</span>
       </p>
-      <h3 class="reveal__country" id="reveal-country"></h3>
+      <h3 class="reveal__head">
+        <img class="reveal__flag" id="reveal-flag" alt="" hidden
+             width="56" height="56" decoding="async">
+        <span class="reveal__country" id="reveal-country"></span>
+      </h3>
       <dl class="facts" id="reveal-facts"></dl>
       <p class="reveal__note" id="reveal-note" hidden></p>
     </div>

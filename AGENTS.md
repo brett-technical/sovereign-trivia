@@ -39,11 +39,15 @@ The app is opened by double-clicking `index.html`. There is no server, ever.
 ### Settled product decisions — do not revisit
 - Multiple choice, **exactly 4 options**. Distractors always come from the **same
   region** as the answer.
-- Five question types, one per fact: capital · currency · language · population
-  (4-country superlative, both polarities) · industry (reverse-ID).
+- Six question types: capital · currency · language · population (4-country
+  superlative, both polarities) · industry (reverse-ID) · flag (identify the
+  country from its flag).
+- The **flag question is inverted**: the flag goes in the question card and the
+  four options stay country names. That reuses the whole text-option path —
+  grading, keyboard, screen reader — instead of forking it for image options.
 - A round is **10 questions**; no country twice; no type more than 3 times.
 - **No timer.** The product must not punish a slow thinker.
-- Scheduling unit is the **(country, type) pair** — 981 of them. Leitner level 0-5.
+- Scheduling unit is the **(country, type) pair** — 1,178 of them. Leitner level 0-5.
   A right answer is `level + 1` capped at 5; a wrong answer is `level → 0`.
 - **Mastery commits on every answer**, never at round end.
 - Mastered = every *available* type for that country at level ≥ 3.
@@ -83,8 +87,24 @@ The app is opened by double-clicking `index.html`. There is no server, ever.
 ## Files in this project (open only when you need them)
 - Why this exists, and its limits → `INTENT.md` *(immutable)*
 - For humans / how to run it → `README.md`
+- Design system, and why it is what it is → `DESIGN.md`
 - Canonical country data → `data/countries.json`; regenerate with
   `python data/build-data-js.py`
+- Country → ISO2 flag map → `data/flag-codes.py` (run it to validate the map)
+- Third-party asset licences → `LICENSES.md`
+
+### Flags
+- 197 circular SVGs in `assets/flags/`, named by ISO 3166-1 alpha-2. The
+  country → code map is `data/flag-codes.py`; `iso2` on each corpus record.
+- They are **plain files, not base64** — `<img src>` works under `file://`.
+- **`FLAG_FAMILIES` in `questions.js` is load-bearing.** Flags that look alike
+  cluster inside one region (pan-Slavic, Nordic cross, Gran Colombia, Arab
+  Liberation, pan-African, Union-Jack ensigns), and distractors are drawn from
+  one region — so same-region selection *causes* the collisions rather than
+  preventing them. At most one member of a family may appear per option set.
+  A pairwise veto list was tried first and kept missing cases; do not go back
+  to one. Adding a country to the corpus means checking it against these
+  families.
 
 ## Known data defects
 - **Palau and Tonga** — identical `industries` strings; the `industry` type is

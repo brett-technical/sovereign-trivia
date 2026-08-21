@@ -29,7 +29,7 @@ launcher yet. That's a decision we haven't made, not something we forgot.
 
 ## What's in it
 
-197 countries, each with five facts:
+197 countries, each with five facts plus its flag:
 
 | Fact | Example |
 |---|---|
@@ -38,6 +38,7 @@ launcher yet. That's a decision we haven't made, not something we forgot.
 | Currency | Kenyan Shilling (KES) |
 | Population | 55.1 Million |
 | Industries | Agriculture, tourism, … |
+| Flag | (shown on every reveal, and asked directly) |
 
 The data was compiled with NotebookLM from public country references, then checked and
 cleaned by hand. The raw export and the parser that turned it into structured data are

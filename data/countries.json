@@ -9,7 +9,8 @@
     "industries": "Petroleum, natural gas, mining, petrochemicals, food processing, light industries, construction",
     "accepted_capitals": [
       "Algiers"
-    ]
+    ],
+    "iso2": "dz"
   },
   {
     "region": "Africa",
@@ -21,7 +22,8 @@
     "industries": "Petroleum, diamonds, iron ore, phosphates, feldspar, bauxite, uranium, cement, basic food processing",
     "accepted_capitals": [
       "Luanda"
-    ]
+    ],
+    "iso2": "ao"
   },
   {
     "region": "Africa",
@@ -33,7 +35,8 @@
     "industries": "Textiles, food processing, construction materials, oil/gas, palm oil, port services",
     "accepted_capitals": [
       "Porto-Novo"
-    ]
+    ],
+    "iso2": "bj"
   },
   {
     "region": "Africa",
@@ -45,7 +48,8 @@
     "industries": "Diamond mining, copper, nickel, soda ash, meat processing, tourism, textiles",
     "accepted_capitals": [
       "Gaborone"
-    ]
+    ],
+    "iso2": "bw"
   },
   {
     "region": "Africa",
@@ -57,7 +61,8 @@
     "industries": "Gold mining, cotton lint, beverage production, agricultural processing, soap, cigarettes",
     "accepted_capitals": [
       "Ouagadougou"
-    ]
+    ],
+    "iso2": "bf"
   },
   {
     "region": "Africa",
@@ -69,7 +74,8 @@
     "industries": "Light consumer goods, coffee/tea processing, sugar refining, assembly of imported components",
     "accepted_capitals": [
       "Gitega"
-    ]
+    ],
+    "iso2": "bi"
   },
   {
     "region": "Africa",
@@ -81,7 +87,8 @@
     "industries": "Tourism, fish processing, salt mining, garments, ship repair, beverages",
     "accepted_capitals": [
       "Praia"
-    ]
+    ],
+    "iso2": "cv"
   },
   {
     "region": "Africa",
@@ -93,7 +100,8 @@
     "industries": "Petroleum production and refining, aluminum smelting, food processing, light consumer goods, timber",
     "accepted_capitals": [
       "Yaoundé"
-    ]
+    ],
+    "iso2": "cm"
   },
   {
     "region": "Africa",
@@ -105,7 +113,8 @@
     "industries": "Gold/diamond mining, logging, brewing, sugar refining, textiles, soap",
     "accepted_capitals": [
       "Bangui"
-    ]
+    ],
+    "iso2": "cf"
   },
   {
     "region": "Africa",
@@ -117,7 +126,8 @@
     "industries": "Oil extraction, cotton textiles, meatpacking, brewing, natron (sodium carbonate), soap",
     "accepted_capitals": [
       "N'Djamena"
-    ]
+    ],
+    "iso2": "td"
   },
   {
     "region": "Africa",
@@ -129,7 +139,8 @@
     "industries": "Tourism, perfume distillation (ylang-ylang), vanilla processing, cloves, essential oils",
     "accepted_capitals": [
       "Moroni"
-    ]
+    ],
+    "iso2": "km"
   },
   {
     "region": "Africa",
@@ -141,7 +152,8 @@
     "industries": "Mining (copper, cobalt, diamonds, gold), oil/gas, consumer products, cement",
     "accepted_capitals": [
       "Kinshasa"
-    ]
+    ],
+    "iso2": "cd"
   },
   {
     "region": "Africa",
@@ -153,7 +165,8 @@
     "industries": "Petroleum extraction, cement, lumber, brewing, sugar, palm oil, soap",
     "accepted_capitals": [
       "Brazzaville"
-    ]
+    ],
+    "iso2": "cg"
   },
   {
     "region": "Africa",
@@ -166,7 +179,8 @@
     "accepted_capitals": [
       "Yamoussoukro",
       "Abidjan"
-    ]
+    ],
+    "iso2": "ci"
   },
   {
     "region": "Africa",
@@ -178,7 +192,8 @@
     "industries": "Port and logistics services, banking, shipping, construction, salt extraction",
     "accepted_capitals": [
       "Djibouti"
-    ]
+    ],
+    "iso2": "dj"
   },
   {
     "region": "Africa",
@@ -190,7 +205,8 @@
     "industries": "Tourism, petroleum/gas, textiles, food processing, chemicals, pharmaceuticals, construction",
     "accepted_capitals": [
       "Cairo"
-    ]
+    ],
+    "iso2": "eg"
   },
   {
     "region": "Africa",
@@ -202,7 +218,8 @@
     "industries": "Petroleum extraction, natural gas, fishing, timber, cocoa processing",
     "accepted_capitals": [
       "Malabo"
-    ]
+    ],
+    "iso2": "gq"
   },
   {
     "region": "Africa",
@@ -214,7 +231,8 @@
     "industries": "Mining (gold, copper, zinc), food processing, beverages, textiles, light manufacturing",
     "accepted_capitals": [
       "Asmara"
-    ]
+    ],
+    "iso2": "er"
   },
   {
     "region": "Africa",
@@ -227,7 +245,8 @@
     "accepted_capitals": [
       "Mbabane",
       "Lobamba"
-    ]
+    ],
+    "iso2": "sz"
   },
   {
     "region": "Africa",
@@ -239,7 +258,8 @@
     "industries": "Food processing, beverages, textiles, leather, chemicals, metals, cement",
     "accepted_capitals": [
       "Addis Ababa"
-    ]
+    ],
+    "iso2": "et"
   },
   {
     "region": "Africa",
@@ -251,7 +271,8 @@
     "industries": "Petroleum extraction, manganese mining, logging, plywood, chemicals",
     "accepted_capitals": [
       "Libreville"
-    ]
+    ],
+    "iso2": "ga"
   },
   {
     "region": "Africa",
@@ -263,7 +284,8 @@
     "industries": "Peanut processing, fish, hides, tourism, brewing, agricultural assembly",
     "accepted_capitals": [
       "Banjul"
-    ]
+    ],
+    "iso2": "gm"
   },
   {
     "region": "Africa",
@@ -275,7 +297,8 @@
     "industries": "Gold mining, cocoa processing, petroleum, lumbering, aluminum smelting, light manufacturing",
     "accepted_capitals": [
       "Accra"
-    ]
+    ],
+    "iso2": "gh"
   },
   {
     "region": "Africa",
@@ -287,7 +310,8 @@
     "industries": "Bauxite mining, alumina refining, iron ore, diamonds, gold, agricultural processing",
     "accepted_capitals": [
       "Conakry"
-    ]
+    ],
+    "iso2": "gn"
   },
   {
     "region": "Africa",
@@ -299,7 +323,8 @@
     "industries": "Agricultural processing, beer/soft drinks, cashew nut processing, fishing",
     "accepted_capitals": [
       "Bissau"
-    ]
+    ],
+    "iso2": "gw"
   },
   {
     "region": "Africa",
@@ -311,7 +336,8 @@
     "industries": "Tourism, agriculture (tea, coffee, flowers), plastic products, consumer goods, oil refining",
     "accepted_capitals": [
       "Nairobi"
-    ]
+    ],
+    "iso2": "ke"
   },
   {
     "region": "Africa",
@@ -323,7 +349,8 @@
     "industries": "Apparel/textiles, diamond mining, water export (to South Africa), agriculture",
     "accepted_capitals": [
       "Maseru"
-    ]
+    ],
+    "iso2": "ls"
   },
   {
     "region": "Africa",
@@ -335,7 +362,8 @@
     "industries": "Rubber processing, palm oil processing, timber, iron ore mining, gold, diamond",
     "accepted_capitals": [
       "Monrovia"
-    ]
+    ],
+    "iso2": "lr"
   },
   {
     "region": "Africa",
@@ -347,7 +375,8 @@
     "industries": "Petroleum, petrochemicals, aluminum, iron and steel, food processing",
     "accepted_capitals": [
       "Tripoli"
-    ]
+    ],
+    "iso2": "ly"
   },
   {
     "region": "Africa",
@@ -359,7 +388,8 @@
     "industries": "Textiles/apparel, seafood processing, vanilla extraction, mining (ilmenite, nickel), tourism",
     "accepted_capitals": [
       "Antananarivo"
-    ]
+    ],
+    "iso2": "mg"
   },
   {
     "region": "Africa",
@@ -371,7 +401,8 @@
     "industries": "Tobacco, tea, sugar, sawmill products, cement, consumer goods",
     "accepted_capitals": [
       "Lilongwe"
-    ]
+    ],
+    "iso2": "mw"
   },
   {
     "region": "Africa",
@@ -383,7 +414,8 @@
     "industries": "Gold mining, agricultural processing (cotton, grain), phosphates, salt mining",
     "accepted_capitals": [
       "Bamako"
-    ]
+    ],
+    "iso2": "ml"
   },
   {
     "region": "Africa",
@@ -395,7 +427,8 @@
     "industries": "Iron ore mining, gold/copper mining, fish processing, gypsum mining",
     "accepted_capitals": [
       "Nouakchott"
-    ]
+    ],
+    "iso2": "mr"
   },
   {
     "region": "Africa",
@@ -407,7 +440,8 @@
     "industries": "Tourism, textiles/apparel, financial services, sugar milling, information technology",
     "accepted_capitals": [
       "Port Louis"
-    ]
+    ],
+    "iso2": "mu"
   },
   {
     "region": "Africa",
@@ -419,7 +453,8 @@
     "industries": "Phosphate mining, automotive manufacturing, tourism, aerospace, textiles, agriculture",
     "accepted_capitals": [
       "Rabat"
-    ]
+    ],
+    "iso2": "ma"
   },
   {
     "region": "Africa",
@@ -431,7 +466,8 @@
     "industries": "Coal mining, aluminum smelting, natural gas extraction, timber, agricultural processing",
     "accepted_capitals": [
       "Maputo"
-    ]
+    ],
+    "iso2": "mz"
   },
   {
     "region": "Africa",
@@ -443,7 +479,8 @@
     "industries": "Diamond/uranium mining, meatpacking, fish processing, copper extraction, tourism",
     "accepted_capitals": [
       "Windhoek"
-    ]
+    ],
+    "iso2": "na"
   },
   {
     "region": "Africa",
@@ -455,7 +492,8 @@
     "industries": "Uranium mining, petroleum, coal mining, agricultural processing (millet, sorghum)",
     "accepted_capitals": [
       "Niamey"
-    ]
+    ],
+    "iso2": "ne"
   },
   {
     "region": "Africa",
@@ -467,7 +505,8 @@
     "industries": "Petroleum production and refining, coal, tin, columbite, rubber, wood, textiles",
     "accepted_capitals": [
       "Abuja"
-    ]
+    ],
+    "iso2": "ng"
   },
   {
     "region": "Africa",
@@ -479,7 +518,8 @@
     "industries": "Tourism, agricultural processing (coffee, tea), cement, mining (tin, tungsten), textiles",
     "accepted_capitals": [
       "Kigali"
-    ]
+    ],
+    "iso2": "rw"
   },
   {
     "region": "Africa",
@@ -491,7 +531,8 @@
     "industries": "Light construction, soap, beer, cocoa processing, tourism",
     "accepted_capitals": [
       "São Tomé"
-    ]
+    ],
+    "iso2": "st"
   },
   {
     "region": "Africa",
@@ -503,7 +544,8 @@
     "industries": "Agricultural/fish processing, phosphate mining, petroleum refining, construction materials",
     "accepted_capitals": [
       "Dakar"
-    ]
+    ],
+    "iso2": "sn"
   },
   {
     "region": "Africa",
@@ -515,7 +557,8 @@
     "industries": "Tourism, tuna fishing and processing, beverage manufacturing, boat building",
     "accepted_capitals": [
       "Victoria"
-    ]
+    ],
+    "iso2": "sc"
   },
   {
     "region": "Africa",
@@ -527,7 +570,8 @@
     "industries": "Diamond mining, iron ore, rutile, bauxite, agricultural processing, brewing",
     "accepted_capitals": [
       "Freetown"
-    ]
+    ],
+    "iso2": "sl"
   },
   {
     "region": "Africa",
@@ -539,7 +583,8 @@
     "industries": "Telecommunications, livestock trading, money transfer services, basic food processing",
     "accepted_capitals": [
       "Mogadishu"
-    ]
+    ],
+    "iso2": "so"
   },
   {
     "region": "Africa",
@@ -553,7 +598,8 @@
       "Pretoria",
       "Cape Town",
       "Bloemfontein"
-    ]
+    ],
+    "iso2": "za"
   },
   {
     "region": "Africa",
@@ -565,7 +611,8 @@
     "industries": "Petroleum extraction, lumbering, basic consumer goods production",
     "accepted_capitals": [
       "Juba"
-    ]
+    ],
+    "iso2": "ss"
   },
   {
     "region": "Africa",
@@ -577,7 +624,8 @@
     "industries": "Oil extraction, cotton ginning, textiles, cement, agricultural processing",
     "accepted_capitals": [
       "Khartoum"
-    ]
+    ],
+    "iso2": "sd"
   },
   {
     "region": "Africa",
@@ -589,7 +637,8 @@
     "industries": "Agricultural processing (sugar, beer, cigarettes), gold mining, tourism, textiles",
     "accepted_capitals": [
       "Dodoma"
-    ]
+    ],
+    "iso2": "tz"
   },
   {
     "region": "Africa",
@@ -601,7 +650,8 @@
     "industries": "Phosphate mining, agricultural processing, handicrafts, textiles, brewing",
     "accepted_capitals": [
       "Lomé"
-    ]
+    ],
+    "iso2": "tg"
   },
   {
     "region": "Africa",
@@ -613,7 +663,8 @@
     "industries": "Tourism, phosphate mining, textiles, automotive parts, food/olive oil processing",
     "accepted_capitals": [
       "Tunis"
-    ]
+    ],
+    "iso2": "tn"
   },
   {
     "region": "Africa",
@@ -625,7 +676,8 @@
     "industries": "Agricultural processing (brewing, sugar, tobacco), cotton, cement, light consumer goods",
     "accepted_capitals": [
       "Kampala"
-    ]
+    ],
+    "iso2": "ug"
   },
   {
     "region": "Africa",
@@ -637,7 +689,8 @@
     "industries": "Copper mining and processing, emerald mining, construction, foodstuffs, beverages",
     "accepted_capitals": [
       "Lusaka"
-    ]
+    ],
+    "iso2": "zm"
   },
   {
     "region": "Africa",
@@ -649,7 +702,8 @@
     "industries": "Mining (gold, platinum, coal), agriculture (tobacco, cotton), wood products, textiles",
     "accepted_capitals": [
       "Harare"
-    ]
+    ],
+    "iso2": "zw"
   },
   {
     "region": "Asia",
@@ -661,7 +715,8 @@
     "industries": "Agriculture (wheat, fruits, nuts), textiles, soap, furniture, shoes, coal, copper, handwoven carpets",
     "accepted_capitals": [
       "Kabul"
-    ]
+    ],
+    "iso2": "af"
   },
   {
     "region": "Asia",
@@ -673,7 +728,8 @@
     "industries": "Metal processing, IT/software development, diamond-cutting, brandy, jewelry, machinery, agriculture",
     "accepted_capitals": [
       "Yerevan"
-    ]
+    ],
+    "iso2": "am"
   },
   {
     "region": "Asia",
@@ -685,7 +741,8 @@
     "industries": "Petroleum, natural gas, oilfield equipment, steel, iron ore, cement, textiles, agriculture",
     "accepted_capitals": [
       "Baku"
-    ]
+    ],
+    "iso2": "az"
   },
   {
     "region": "Asia",
@@ -697,7 +754,8 @@
     "industries": "Petroleum refining, aluminum smelting, offshore banking, finance, tourism, ship repair",
     "accepted_capitals": [
       "Manama"
-    ]
+    ],
+    "iso2": "bh"
   },
   {
     "region": "Asia",
@@ -709,7 +767,8 @@
     "industries": "Ready-made garments (textiles), jute, tea, leather goods, paper, pharmaceuticals, shipbuilding",
     "accepted_capitals": [
       "Dhaka"
-    ]
+    ],
+    "iso2": "bd"
   },
   {
     "region": "Asia",
@@ -721,7 +780,8 @@
     "industries": "Hydroelectricity (export to India), cement, wood products, processed fruits, tourism, mining",
     "accepted_capitals": [
       "Thimphu"
-    ]
+    ],
+    "iso2": "bt"
   },
   {
     "region": "Asia",
@@ -733,7 +793,8 @@
     "industries": "Petroleum refining, liquefied natural gas (LNG), construction, garments, tourism",
     "accepted_capitals": [
       "Bandar Seri Begawan"
-    ]
+    ],
+    "iso2": "bn"
   },
   {
     "region": "Asia",
@@ -745,7 +806,8 @@
     "industries": "Garments/footwear, tourism, construction, rice milling, wood/rubber processing",
     "accepted_capitals": [
       "Phnom Penh"
-    ]
+    ],
+    "iso2": "kh"
   },
   {
     "region": "Asia",
@@ -757,7 +819,8 @@
     "industries": "Electronics, manufacturing, steel, chemicals, toys, footwear, motor vehicles, textiles",
     "accepted_capitals": [
       "Beijing"
-    ]
+    ],
+    "iso2": "cn"
   },
   {
     "region": "Asia",
@@ -769,7 +832,8 @@
     "industries": "Steel, machine tools, electrical appliances, mining (manganese, copper), wine, chemicals",
     "accepted_capitals": [
       "Tbilisi"
-    ]
+    ],
+    "iso2": "ge"
   },
   {
     "region": "Asia",
@@ -781,7 +845,8 @@
     "industries": "Software/IT, pharmaceuticals, chemicals, steel, textiles, transportation equipment, agriculture",
     "accepted_capitals": [
       "New Delhi"
-    ]
+    ],
+    "iso2": "in"
   },
   {
     "region": "Asia",
@@ -794,7 +859,8 @@
     "accepted_capitals": [
       "Jakarta",
       "Nusantara"
-    ]
+    ],
+    "iso2": "id"
   },
   {
     "region": "Asia",
@@ -806,7 +872,8 @@
     "industries": "Petroleum, petrochemicals, gas, steel, automotive, agriculture (pistachios, saffron), textiles",
     "accepted_capitals": [
       "Tehran"
-    ]
+    ],
+    "iso2": "ir"
   },
   {
     "region": "Asia",
@@ -818,7 +885,8 @@
     "industries": "Petroleum, chemicals, textiles, leather, construction materials, food processing",
     "accepted_capitals": [
       "Baghdad"
-    ]
+    ],
+    "iso2": "iq"
   },
   {
     "region": "Asia",
@@ -830,7 +898,8 @@
     "industries": "High-technology products (software, aviation, communications), diamonds, metal products",
     "accepted_capitals": [
       "Jerusalem"
-    ]
+    ],
+    "iso2": "il"
   },
   {
     "region": "Asia",
@@ -842,7 +911,8 @@
     "industries": "Motor vehicles, electronic equipment, machine tools, steel, nonferrous metals, chemicals",
     "accepted_capitals": [
       "Tokyo"
-    ]
+    ],
+    "iso2": "jp"
   },
   {
     "region": "Asia",
@@ -854,7 +924,8 @@
     "industries": "Phosphate mining, potash, pharmaceuticals, petroleum refining, cement, tourism",
     "accepted_capitals": [
       "Amman"
-    ]
+    ],
+    "iso2": "jo"
   },
   {
     "region": "Asia",
@@ -866,7 +937,8 @@
     "industries": "Oil, coal mining, manganese/iron ore extraction, uranium mining, metallurgical processing",
     "accepted_capitals": [
       "Astana"
-    ]
+    ],
+    "iso2": "kz"
   },
   {
     "region": "Asia",
@@ -878,7 +950,8 @@
     "industries": "Petroleum, petrochemicals, cement, shipbuilding and repair, desalination",
     "accepted_capitals": [
       "Kuwait City"
-    ]
+    ],
+    "iso2": "kw"
   },
   {
     "region": "Asia",
@@ -890,7 +963,8 @@
     "industries": "Gold mining, agricultural machinery, textiles, food processing, construction materials",
     "accepted_capitals": [
       "Bishkek"
-    ]
+    ],
+    "iso2": "kg"
   },
   {
     "region": "Asia",
@@ -902,7 +976,8 @@
     "industries": "Mining (copper, gold), timber, agricultural processing, hydropower, garments",
     "accepted_capitals": [
       "Vientiane"
-    ]
+    ],
+    "iso2": "la"
   },
   {
     "region": "Asia",
@@ -914,7 +989,8 @@
     "industries": "Banking, tourism, food processing, jewelry, cement, textiles, chemicals",
     "accepted_capitals": [
       "Beirut"
-    ]
+    ],
+    "iso2": "lb"
   },
   {
     "region": "Asia",
@@ -926,7 +1002,8 @@
     "industries": "Semiconductors/electronics, petroleum refining, liquefied natural gas (LNG), palm oil processing",
     "accepted_capitals": [
       "Kuala Lumpur"
-    ]
+    ],
+    "iso2": "my"
   },
   {
     "region": "Asia",
@@ -938,7 +1015,8 @@
     "industries": "Tourism, fish processing, shipping, boat building, coconut processing",
     "accepted_capitals": [
       "Malé"
-    ]
+    ],
+    "iso2": "mv"
   },
   {
     "region": "Asia",
@@ -950,7 +1028,8 @@
     "industries": "Coal, copper/gold mining, cashmere wool, construction materials, food processing",
     "accepted_capitals": [
       "Ulaanbaatar"
-    ]
+    ],
+    "iso2": "mn"
   },
   {
     "region": "Asia",
@@ -962,7 +1041,8 @@
     "industries": "Garments, agricultural processing, jade/gems, natural gas, wood products",
     "accepted_capitals": [
       "Naypyidaw"
-    ]
+    ],
+    "iso2": "mm"
   },
   {
     "region": "Asia",
@@ -974,7 +1054,8 @@
     "industries": "Tourism, garments/carpets, jute, sugar, tea processing, cement, paper",
     "accepted_capitals": [
       "Kathmandu"
-    ]
+    ],
+    "iso2": "np"
   },
   {
     "region": "Asia",
@@ -986,7 +1067,8 @@
     "industries": "Military products, machine building, electric power, chemicals, mining (coal, iron)",
     "accepted_capitals": [
       "Pyongyang"
-    ]
+    ],
+    "iso2": "kp"
   },
   {
     "region": "Asia",
@@ -998,7 +1080,8 @@
     "industries": "Crude oil production, natural gas, copper mining, construction, cement, agriculture",
     "accepted_capitals": [
       "Muscat"
-    ]
+    ],
+    "iso2": "om"
   },
   {
     "region": "Asia",
@@ -1010,7 +1093,8 @@
     "industries": "Textiles/apparel, food processing, pharmaceuticals, construction materials, paper, chemicals",
     "accepted_capitals": [
       "Islamabad"
-    ]
+    ],
+    "iso2": "pk"
   },
   {
     "region": "Asia",
@@ -1023,7 +1107,8 @@
     "accepted_capitals": [
       "Jerusalem",
       "Ramallah"
-    ]
+    ],
+    "iso2": "ps"
   },
   {
     "region": "Asia",
@@ -1035,7 +1120,8 @@
     "industries": "Electronics/semiconductors, business process outsourcing (BPO), garments, food, chemicals",
     "accepted_capitals": [
       "Manila"
-    ]
+    ],
+    "iso2": "ph"
   },
   {
     "region": "Asia",
@@ -1047,7 +1133,8 @@
     "industries": "Liquefied natural gas (LNG), crude oil production, petrochemicals, fertilizers, finance",
     "accepted_capitals": [
       "Doha"
-    ]
+    ],
+    "iso2": "qa"
   },
   {
     "region": "Asia",
@@ -1059,7 +1146,8 @@
     "industries": "Crude oil production, petroleum refining, basic petrochemicals, ammonia, industrial gases",
     "accepted_capitals": [
       "Riyadh"
-    ]
+    ],
+    "iso2": "sa"
   },
   {
     "region": "Asia",
@@ -1071,7 +1159,8 @@
     "industries": "Electronics, chemicals, financial services, biomedical sciences, petroleum refining, logistics",
     "accepted_capitals": [
       "Singapore"
-    ]
+    ],
+    "iso2": "sg"
   },
   {
     "region": "Asia",
@@ -1083,7 +1172,8 @@
     "industries": "Semiconductors, electronics, automobiles, shipbuilding, steel, petrochemicals",
     "accepted_capitals": [
       "Seoul"
-    ]
+    ],
+    "iso2": "kr"
   },
   {
     "region": "Asia",
@@ -1096,7 +1186,8 @@
     "accepted_capitals": [
       "Sri Jayawardenepura Kotte",
       "Colombo"
-    ]
+    ],
+    "iso2": "lk"
   },
   {
     "region": "Asia",
@@ -1108,7 +1199,8 @@
     "industries": "Petroleum, textiles, food processing, beverages, tobacco, phosphate mining",
     "accepted_capitals": [
       "Damascus"
-    ]
+    ],
+    "iso2": "sy"
   },
   {
     "region": "Asia",
@@ -1120,7 +1212,8 @@
     "industries": "Semiconductors/microelectronics, electronics, communications/IT, chemicals, plastics, machinery",
     "accepted_capitals": [
       "Taipei"
-    ]
+    ],
+    "iso2": "tw"
   },
   {
     "region": "Asia",
@@ -1132,7 +1225,8 @@
     "industries": "Aluminum processing, uranium extraction, chemicals, textiles/cotton, food processing",
     "accepted_capitals": [
       "Dushanbe"
-    ]
+    ],
+    "iso2": "tj"
   },
   {
     "region": "Asia",
@@ -1144,7 +1238,8 @@
     "industries": "Automobiles, electronics/appliances, tourism, computer components, petrochemicals, agricultural processing",
     "accepted_capitals": [
       "Bangkok"
-    ]
+    ],
+    "iso2": "th"
   },
   {
     "region": "Asia",
@@ -1156,7 +1251,8 @@
     "industries": "Oil/gas extraction, coffee processing, soap, handicrafts, tourism",
     "accepted_capitals": [
       "Dili"
-    ]
+    ],
+    "iso2": "tl"
   },
   {
     "region": "Asia",
@@ -1168,7 +1264,8 @@
     "industries": "Automotive assembly, electronics, textiles/apparel, steel, petrochemicals, tourism",
     "accepted_capitals": [
       "Ankara"
-    ]
+    ],
+    "iso2": "tr"
   },
   {
     "region": "Asia",
@@ -1180,7 +1277,8 @@
     "industries": "Natural gas extraction, petroleum refining, textiles/cotton processing, chemical fibers",
     "accepted_capitals": [
       "Ashgabat"
-    ]
+    ],
+    "iso2": "tm"
   },
   {
     "region": "Asia",
@@ -1192,7 +1290,8 @@
     "industries": "Petroleum/petrochemicals, commercial finance, real estate/construction, tourism, aluminum",
     "accepted_capitals": [
       "Abu Dhabi"
-    ]
+    ],
+    "iso2": "ae"
   },
   {
     "region": "Asia",
@@ -1204,7 +1303,8 @@
     "industries": "Textiles/cotton processing, natural gas, metallurgy/gold, machinery, chemicals",
     "accepted_capitals": [
       "Tashkent"
-    ]
+    ],
+    "iso2": "uz"
   },
   {
     "region": "Asia",
@@ -1216,7 +1316,8 @@
     "industries": "Electronics/semiconductors, garments/textiles, footwear, seafood processing, coal mining, tourism",
     "accepted_capitals": [
       "Hanoi"
-    ]
+    ],
+    "iso2": "vn"
   },
   {
     "region": "Asia",
@@ -1229,7 +1330,8 @@
     "accepted_capitals": [
       "Sana'a",
       "Aden"
-    ]
+    ],
+    "iso2": "ye"
   },
   {
     "region": "Europe",
@@ -1241,7 +1343,8 @@
     "industries": "Tourism, food processing, footwear/clothing, lumber, oil, mining (chrome, copper, nickel), cement",
     "accepted_capitals": [
       "Tirana"
-    ]
+    ],
+    "iso2": "al"
   },
   {
     "region": "Europe",
@@ -1253,7 +1356,8 @@
     "industries": "Tourism (skiing/shopping), banking and financial services, retail, tobacco manufacturing, furniture",
     "accepted_capitals": [
       "Andorra la Vella"
-    ]
+    ],
+    "iso2": "ad"
   },
   {
     "region": "Europe",
@@ -1265,7 +1369,8 @@
     "industries": "Construction, machinery, vehicles and parts, food, chemicals, tourism, high-quality steel",
     "accepted_capitals": [
       "Vienna"
-    ]
+    ],
+    "iso2": "at"
   },
   {
     "region": "Europe",
@@ -1277,7 +1382,8 @@
     "industries": "Metal-cutting machine tools, tractors, trucks, earthmovers, chemical fibers, fertilizers, textiles",
     "accepted_capitals": [
       "Minsk"
-    ]
+    ],
+    "iso2": "by"
   },
   {
     "region": "Europe",
@@ -1289,7 +1395,8 @@
     "industries": "Engineering and metal products, motor vehicle assembly, scientific instruments, chemicals, diamonds",
     "accepted_capitals": [
       "Brussels"
-    ]
+    ],
+    "iso2": "be"
   },
   {
     "region": "Europe",
@@ -1301,7 +1408,8 @@
     "industries": "Steel, coal mining, iron ore, lead, zinc, aluminum, vehicle assembly, textiles, wood products",
     "accepted_capitals": [
       "Sarajevo"
-    ]
+    ],
+    "iso2": "ba"
   },
   {
     "region": "Europe",
@@ -1313,7 +1421,8 @@
     "industries": "Electricity, gas, water; food, beverages, tobacco; machinery and equipment, metallurgy, tourism",
     "accepted_capitals": [
       "Sofia"
-    ]
+    ],
+    "iso2": "bg"
   },
   {
     "region": "Europe",
@@ -1325,7 +1434,8 @@
     "industries": "Tourism, shipbuilding, chemicals, food processing, machinery, electronics, pharmaceuticals",
     "accepted_capitals": [
       "Zagreb"
-    ]
+    ],
+    "iso2": "hr"
   },
   {
     "region": "Europe",
@@ -1337,7 +1447,8 @@
     "industries": "Tourism, shipping, financial services, food/beverage processing, textiles, pharmaceuticals",
     "accepted_capitals": [
       "Nicosia"
-    ]
+    ],
+    "iso2": "cy"
   },
   {
     "region": "Europe",
@@ -1349,7 +1460,8 @@
     "industries": "Motor vehicles, metallurgy, machinery, chemicals, glass, electronics, tourism",
     "accepted_capitals": [
       "Prague"
-    ]
+    ],
+    "iso2": "cz"
   },
   {
     "region": "Europe",
@@ -1361,7 +1473,8 @@
     "industries": "Wind turbines, pharmaceuticals, maritime shipping, food processing, machinery, chemicals",
     "accepted_capitals": [
       "Copenhagen"
-    ]
+    ],
+    "iso2": "dk"
   },
   {
     "region": "Europe",
@@ -1373,7 +1486,8 @@
     "industries": "IT/telecommunications, wood products, machinery, electronics, shale oil extraction, logistics",
     "accepted_capitals": [
       "Tallinn"
-    ]
+    ],
+    "iso2": "ee"
   },
   {
     "region": "Europe",
@@ -1385,7 +1499,8 @@
     "industries": "Metals, electronics, forestry (paper, wood), shipbuilding, chemicals, telecommunications",
     "accepted_capitals": [
       "Helsinki"
-    ]
+    ],
+    "iso2": "fi"
   },
   {
     "region": "Europe",
@@ -1397,7 +1512,8 @@
     "industries": "Aerospace, automotive, chemicals, metallurgy, textiles, food/beverage, tourism",
     "accepted_capitals": [
       "Paris"
-    ]
+    ],
+    "iso2": "fr"
   },
   {
     "region": "Europe",
@@ -1409,7 +1525,8 @@
     "industries": "Automotive, mechanical engineering, chemicals, electronics, steel, pharmaceuticals, tourism",
     "accepted_capitals": [
       "Berlin"
-    ]
+    ],
+    "iso2": "de"
   },
   {
     "region": "Europe",
@@ -1421,7 +1538,8 @@
     "industries": "Tourism, shipping, food/tobacco processing, textiles, chemicals, metal products, mining",
     "accepted_capitals": [
       "Athens"
-    ]
+    ],
+    "iso2": "gr"
   },
   {
     "region": "Europe",
@@ -1433,7 +1551,8 @@
     "industries": "Printing, production of coins/medals, postage stamps, mosaics, staff uniforms, financial activities",
     "accepted_capitals": [
       "Vatican City"
-    ]
+    ],
+    "iso2": "va"
   },
   {
     "region": "Europe",
@@ -1445,7 +1564,8 @@
     "industries": "Motor vehicles, electronics, pharmaceuticals, metallurgy, food processing, chemicals",
     "accepted_capitals": [
       "Budapest"
-    ]
+    ],
+    "iso2": "hu"
   },
   {
     "region": "Europe",
@@ -1457,7 +1577,8 @@
     "industries": "Fish processing, aluminum smelting, geothermal power, tourism, software/biotechnology",
     "accepted_capitals": [
       "Reykjavik"
-    ]
+    ],
+    "iso2": "is"
   },
   {
     "region": "Europe",
@@ -1469,7 +1590,8 @@
     "industries": "Pharmaceuticals, medical devices, software/computer services, financial services, food/beverage",
     "accepted_capitals": [
       "Dublin"
-    ]
+    ],
+    "iso2": "ie"
   },
   {
     "region": "Europe",
@@ -1481,7 +1603,8 @@
     "industries": "Tourism, machinery, automotive, fashion/textiles, chemicals, food processing, ceramics",
     "accepted_capitals": [
       "Rome"
-    ]
+    ],
+    "iso2": "it"
   },
   {
     "region": "Europe",
@@ -1493,7 +1616,8 @@
     "industries": "Mining (lignite, lead, zinc), construction materials, food processing, beverages, textiles",
     "accepted_capitals": [
       "Pristina"
-    ]
+    ],
+    "iso2": "xk"
   },
   {
     "region": "Europe",
@@ -1505,7 +1629,8 @@
     "industries": "Woodworking, metal processing, food products, chemicals, pharmaceuticals, logistics",
     "accepted_capitals": [
       "Riga"
-    ]
+    ],
+    "iso2": "lv"
   },
   {
     "region": "Europe",
@@ -1517,7 +1642,8 @@
     "industries": "Precision instruments, electronics, ceramics, dental products, financial services",
     "accepted_capitals": [
       "Vaduz"
-    ]
+    ],
+    "iso2": "li"
   },
   {
     "region": "Europe",
@@ -1529,7 +1655,8 @@
     "industries": "Biotechnology, petroleum refining, furniture, lasers, food processing, textiles",
     "accepted_capitals": [
       "Vilnius"
-    ]
+    ],
+    "iso2": "lt"
   },
   {
     "region": "Europe",
@@ -1541,7 +1668,8 @@
     "industries": "Banking and financial services, iron and steel, information technology, telecommunications, chemicals",
     "accepted_capitals": [
       "Luxembourg City"
-    ]
+    ],
+    "iso2": "lu"
   },
   {
     "region": "Europe",
@@ -1553,7 +1681,8 @@
     "industries": "Tourism, electronics, financial services, online gaming, pharmaceuticals, shipbuilding",
     "accepted_capitals": [
       "Valletta"
-    ]
+    ],
+    "iso2": "mt"
   },
   {
     "region": "Europe",
@@ -1565,7 +1694,8 @@
     "industries": "Wine making, food processing, agricultural machinery, textiles, construction materials",
     "accepted_capitals": [
       "Chisinau"
-    ]
+    ],
+    "iso2": "md"
   },
   {
     "region": "Europe",
@@ -1577,7 +1707,8 @@
     "industries": "Banking and wealth management, tourism (casinos/resorts), cosmetics, chemicals",
     "accepted_capitals": [
       "Monaco"
-    ]
+    ],
+    "iso2": "mc"
   },
   {
     "region": "Europe",
@@ -1589,7 +1720,8 @@
     "industries": "Tourism, metal processing (aluminum, steel), coal mining, forestry, agriculture",
     "accepted_capitals": [
       "Podgorica"
-    ]
+    ],
+    "iso2": "me"
   },
   {
     "region": "Europe",
@@ -1602,7 +1734,8 @@
     "accepted_capitals": [
       "Amsterdam",
       "The Hague"
-    ]
+    ],
+    "iso2": "nl"
   },
   {
     "region": "Europe",
@@ -1614,7 +1747,8 @@
     "industries": "Coal, metallic ore mining, textiles, chemicals, steel, automotive parts",
     "accepted_capitals": [
       "Skopje"
-    ]
+    ],
+    "iso2": "mk"
   },
   {
     "region": "Europe",
@@ -1626,7 +1760,8 @@
     "industries": "Petroleum and gas, hydropower, maritime shipping, fish processing, aluminum, chemicals",
     "accepted_capitals": [
       "Oslo"
-    ]
+    ],
+    "iso2": "no"
   },
   {
     "region": "Europe",
@@ -1638,7 +1773,8 @@
     "industries": "Machine building, iron and steel, coal mining, chemicals, shipbuilding, food processing",
     "accepted_capitals": [
       "Warsaw"
-    ]
+    ],
+    "iso2": "pl"
   },
   {
     "region": "Europe",
@@ -1650,7 +1786,8 @@
     "industries": "Tourism, textiles/footwear, wood pulp/paper, cork processing, automotive assembly",
     "accepted_capitals": [
       "Lisbon"
-    ]
+    ],
+    "iso2": "pt"
   },
   {
     "region": "Europe",
@@ -1662,7 +1799,8 @@
     "industries": "Automotive assembly, electric machinery, textiles, chemicals, metallurgy, mining, agricultural processing",
     "accepted_capitals": [
       "Bucharest"
-    ]
+    ],
+    "iso2": "ro"
   },
   {
     "region": "Europe",
@@ -1674,7 +1812,8 @@
     "industries": "Oil/gas extraction, mining (coal, metals), machine building, military products, chemicals",
     "accepted_capitals": [
       "Moscow"
-    ]
+    ],
+    "iso2": "ru"
   },
   {
     "region": "Europe",
@@ -1686,7 +1825,8 @@
     "industries": "Tourism, banking and finance, ceramics, tiles, clothing, furniture",
     "accepted_capitals": [
       "San Marino"
-    ]
+    ],
+    "iso2": "sm"
   },
   {
     "region": "Europe",
@@ -1698,7 +1838,8 @@
     "industries": "Automotive industry, base metals, food processing, chemicals, machinery, electronics",
     "accepted_capitals": [
       "Belgrade"
-    ]
+    ],
+    "iso2": "rs"
   },
   {
     "region": "Europe",
@@ -1710,7 +1851,8 @@
     "industries": "Automotive assembly, metal products, electronics, chemicals, paper, textiles, tourism",
     "accepted_capitals": [
       "Bratislava"
-    ]
+    ],
+    "iso2": "sk"
   },
   {
     "region": "Europe",
@@ -1722,7 +1864,8 @@
     "industries": "Automotive parts, pharmaceuticals, electronics, metals/metallurgy, wood products",
     "accepted_capitals": [
       "Ljubljana"
-    ]
+    ],
+    "iso2": "si"
   },
   {
     "region": "Europe",
@@ -1734,7 +1877,8 @@
     "industries": "Tourism, motor vehicles, pharmaceuticals, chemicals, machinery, food processing, textiles",
     "accepted_capitals": [
       "Madrid"
-    ]
+    ],
+    "iso2": "es"
   },
   {
     "region": "Europe",
@@ -1746,7 +1890,8 @@
     "industries": "Iron/steel, motor vehicles, precision equipment, telecommunications, wood pulp/paper",
     "accepted_capitals": [
       "Stockholm"
-    ]
+    ],
+    "iso2": "se"
   },
   {
     "region": "Europe",
@@ -1758,7 +1903,8 @@
     "industries": "Financial services/banking, machinery, pharmaceuticals/chemicals, watches, tourism",
     "accepted_capitals": [
       "Bern"
-    ]
+    ],
+    "iso2": "ch"
   },
   {
     "region": "Europe",
@@ -1770,7 +1916,8 @@
     "industries": "Heavy machinery, steel, coal mining, chemicals, agricultural processing, software development",
     "accepted_capitals": [
       "Kyiv"
-    ]
+    ],
+    "iso2": "ua"
   },
   {
     "region": "Europe",
@@ -1782,7 +1929,8 @@
     "industries": "Financial services, aerospace, pharmaceuticals, automotive, creative industries, tourism",
     "accepted_capitals": [
       "London"
-    ]
+    ],
+    "iso2": "gb"
   },
   {
     "region": "Americas",
@@ -1794,7 +1942,8 @@
     "industries": "Tourism, construction, financial services, light manufacturing (clothing, alcohol, assembly)",
     "accepted_capitals": [
       "Saint John's"
-    ]
+    ],
+    "iso2": "ag"
   },
   {
     "region": "Americas",
@@ -1806,7 +1955,8 @@
     "industries": "Food processing, motor vehicles, consumer durables, textiles, chemicals, agriculture (soybeans, beef)",
     "accepted_capitals": [
       "Buenos Aires"
-    ]
+    ],
+    "iso2": "ar"
   },
   {
     "region": "Americas",
@@ -1818,7 +1968,8 @@
     "industries": "Tourism, banking and offshore financial services, transshipment, aragonite/salt, rum",
     "accepted_capitals": [
       "Nassau"
-    ]
+    ],
+    "iso2": "bs"
   },
   {
     "region": "Americas",
@@ -1830,7 +1981,8 @@
     "industries": "Tourism, sugar, light manufacturing, financial services, information services, rum",
     "accepted_capitals": [
       "Bridgetown"
-    ]
+    ],
+    "iso2": "bb"
   },
   {
     "region": "Americas",
@@ -1842,7 +1994,8 @@
     "industries": "Garment production, food processing, tourism, construction, petroleum, agriculture (citrus, sugar)",
     "accepted_capitals": [
       "Belmopan"
-    ]
+    ],
+    "iso2": "bz"
   },
   {
     "region": "Americas",
@@ -1855,7 +2008,8 @@
     "accepted_capitals": [
       "Sucre",
       "La Paz"
-    ]
+    ],
+    "iso2": "bo"
   },
   {
     "region": "Americas",
@@ -1867,7 +2021,8 @@
     "industries": "Iron ore/steel, aircraft (Embraer), motor vehicles, textiles, oil, agriculture (soy, coffee), chemicals",
     "accepted_capitals": [
       "Brasília"
-    ]
+    ],
+    "iso2": "br"
   },
   {
     "region": "Americas",
@@ -1879,7 +2034,8 @@
     "industries": "Transportation equipment, chemicals, minerals, food products, wood/paper, fish, petroleum, natural gas",
     "accepted_capitals": [
       "Ottawa"
-    ]
+    ],
+    "iso2": "ca"
   },
   {
     "region": "Americas",
@@ -1891,7 +2047,8 @@
     "industries": "Copper mining, lithium mining, foodstuffs, fish processing, wood pulp, iron and steel",
     "accepted_capitals": [
       "Santiago"
-    ]
+    ],
+    "iso2": "cl"
   },
   {
     "region": "Americas",
@@ -1903,7 +2060,8 @@
     "industries": "Textiles, food processing, oil, coal mining, chemicals, gold mining, emeralds, coffee",
     "accepted_capitals": [
       "Bogotá"
-    ]
+    ],
+    "iso2": "co"
   },
   {
     "region": "Americas",
@@ -1915,7 +2073,8 @@
     "industries": "Medical devices, microprocessors, food processing, textiles, construction materials, tourism",
     "accepted_capitals": [
       "San José"
-    ]
+    ],
+    "iso2": "cr"
   },
   {
     "region": "Americas",
@@ -1927,7 +2086,8 @@
     "industries": "Tourism, nickel/cobalt mining, biotechnology, sugar, tobacco, petroleum",
     "accepted_capitals": [
       "Havana"
-    ]
+    ],
+    "iso2": "cu"
   },
   {
     "region": "Americas",
@@ -1939,7 +2099,8 @@
     "industries": "Tourism, soap manufacturing, coconut oil, copra, light assembly, agriculture",
     "accepted_capitals": [
       "Roseau"
-    ]
+    ],
+    "iso2": "dm"
   },
   {
     "region": "Americas",
@@ -1951,7 +2112,8 @@
     "industries": "Tourism, sugar processing, gold mining, textiles, medical devices, tobacco, cement",
     "accepted_capitals": [
       "Santo Domingo"
-    ]
+    ],
+    "iso2": "do"
   },
   {
     "region": "Americas",
@@ -1963,7 +2125,8 @@
     "industries": "Petroleum extraction, food processing, textiles, wood products, chemicals, seafood",
     "accepted_capitals": [
       "Quito"
-    ]
+    ],
+    "iso2": "ec"
   },
   {
     "region": "Americas",
@@ -1975,7 +2138,8 @@
     "industries": "Food processing, beverages, petroleum products, chemicals, textiles/apparel",
     "accepted_capitals": [
       "San Salvador"
-    ]
+    ],
+    "iso2": "sv"
   },
   {
     "region": "Americas",
@@ -1987,7 +2151,8 @@
     "industries": "Tourism, nutmeg/mace processing, spices, cocoa, light assembly, construction",
     "accepted_capitals": [
       "Saint George's"
-    ]
+    ],
+    "iso2": "gd"
   },
   {
     "region": "Americas",
@@ -1999,7 +2164,8 @@
     "industries": "Sugar, textiles/garments, furniture, chemicals, petroleum refining, tourism",
     "accepted_capitals": [
       "Guatemala City"
-    ]
+    ],
+    "iso2": "gt"
   },
   {
     "region": "Americas",
@@ -2011,7 +2177,8 @@
     "industries": "Petroleum extraction, bauxite mining, gold mining, sugar milling, rice milling, timber",
     "accepted_capitals": [
       "Georgetown"
-    ]
+    ],
+    "iso2": "gy"
   },
   {
     "region": "Americas",
@@ -2023,7 +2190,8 @@
     "industries": "Apparel, sugar refining, flour milling, cement, light assembly based on imports",
     "accepted_capitals": [
       "Port-au-Prince"
-    ]
+    ],
+    "iso2": "ht"
   },
   {
     "region": "Americas",
@@ -2035,7 +2203,8 @@
     "industries": "Sugar, coffee, textiles/apparel (maquilas), wood products, cigar manufacturing",
     "accepted_capitals": [
       "Tegucigalpa"
-    ]
+    ],
+    "iso2": "hn"
   },
   {
     "region": "Americas",
@@ -2047,7 +2216,8 @@
     "industries": "Tourism, bauxite/alumina mining, sugar, rum, textiles, logistics, food processing",
     "accepted_capitals": [
       "Kingston"
-    ]
+    ],
+    "iso2": "jm"
   },
   {
     "region": "Americas",
@@ -2059,7 +2229,8 @@
     "industries": "Automotive, electronics, aerospace, petroleum, tourism, agriculture, metallurgy",
     "accepted_capitals": [
       "Mexico City"
-    ]
+    ],
+    "iso2": "mx"
   },
   {
     "region": "Americas",
@@ -2071,7 +2242,8 @@
     "industries": "Agricultural processing, clothing/textiles, chemicals, sugar, gold mining",
     "accepted_capitals": [
       "Managua"
-    ]
+    ],
+    "iso2": "ni"
   },
   {
     "region": "Americas",
@@ -2083,7 +2255,8 @@
     "industries": "Service industries (Panama Canal, banking, logistics), construction, oil refining, brewing",
     "accepted_capitals": [
       "Panama City"
-    ]
+    ],
+    "iso2": "pa"
   },
   {
     "region": "Americas",
@@ -2095,7 +2268,8 @@
     "industries": "Hydropower (export), meatpacking, oilseed crushing, timber, textiles",
     "accepted_capitals": [
       "Asunción"
-    ]
+    ],
+    "iso2": "py"
   },
   {
     "region": "Americas",
@@ -2107,7 +2281,8 @@
     "industries": "Mining (copper, gold, zinc, silver), agricultural processing, fishmeal, textiles",
     "accepted_capitals": [
       "Lima"
-    ]
+    ],
+    "iso2": "pe"
   },
   {
     "region": "Americas",
@@ -2119,7 +2294,8 @@
     "industries": "Tourism, financial services, electronics assembly, garment manufacturing, brewing",
     "accepted_capitals": [
       "Basseterre"
-    ]
+    ],
+    "iso2": "kn"
   },
   {
     "region": "Americas",
@@ -2131,7 +2307,8 @@
     "industries": "Tourism, clothing, electronic component assembly, beverage manufacturing, agriculture",
     "accepted_capitals": [
       "Castries"
-    ]
+    ],
+    "iso2": "lc"
   },
   {
     "region": "Americas",
@@ -2143,7 +2320,8 @@
     "industries": "Tourism, food processing, starch manufacturing, light assembly",
     "accepted_capitals": [
       "Kingstown"
-    ]
+    ],
+    "iso2": "vc"
   },
   {
     "region": "Americas",
@@ -2155,7 +2333,8 @@
     "industries": "Gold/bauxite mining, crude oil, lumbering, food processing, aluminum smelting",
     "accepted_capitals": [
       "Paramaribo"
-    ]
+    ],
+    "iso2": "sr"
   },
   {
     "region": "Americas",
@@ -2167,7 +2346,8 @@
     "industries": "Petroleum/petrochemicals, liquefied natural gas (LNG), steel, tourism, beverage production",
     "accepted_capitals": [
       "Port of Spain"
-    ]
+    ],
+    "iso2": "tt"
   },
   {
     "region": "Americas",
@@ -2179,7 +2359,8 @@
     "industries": "High technology/software, financial services, aerospace, motor vehicles, petroleum, agriculture",
     "accepted_capitals": [
       "Washington, D.C."
-    ]
+    ],
+    "iso2": "us"
   },
   {
     "region": "Americas",
@@ -2191,7 +2372,8 @@
     "industries": "Food processing, petroleum products, chemicals, textiles, software, pulp/paper",
     "accepted_capitals": [
       "Montevideo"
-    ]
+    ],
+    "iso2": "uy"
   },
   {
     "region": "Americas",
@@ -2203,7 +2385,8 @@
     "industries": "Petroleum extraction and refining, metallurgy (steel, aluminum), agricultural processing, construction",
     "accepted_capitals": [
       "Caracas"
-    ]
+    ],
+    "iso2": "ve"
   },
   {
     "region": "Oceania",
@@ -2215,7 +2398,8 @@
     "industries": "Mining (iron ore, coal, gold), financial services, tourism, agriculture (wheat, wool), education",
     "accepted_capitals": [
       "Canberra"
-    ]
+    ],
+    "iso2": "au"
   },
   {
     "region": "Oceania",
@@ -2227,7 +2411,8 @@
     "industries": "Tourism, sugar, garments, copra, gold mining, silver, bottled water",
     "accepted_capitals": [
       "Suva"
-    ]
+    ],
+    "iso2": "fj"
   },
   {
     "region": "Oceania",
@@ -2239,7 +2424,8 @@
     "industries": "Fishing, copra, handicrafts, tourism (islands)",
     "accepted_capitals": [
       "Tarawa"
-    ]
+    ],
+    "iso2": "ki"
   },
   {
     "region": "Oceania",
@@ -2251,7 +2437,8 @@
     "industries": "Copra processing, fisheries, handicrafts, tourism, shell collecting",
     "accepted_capitals": [
       "Majuro"
-    ]
+    ],
+    "iso2": "mh"
   },
   {
     "region": "Oceania",
@@ -2263,7 +2450,8 @@
     "industries": "Fish processing, tourism, copra, black pepper farming, construction",
     "accepted_capitals": [
       "Palikir"
-    ]
+    ],
+    "iso2": "fm"
   },
   {
     "region": "Oceania",
@@ -2275,7 +2463,8 @@
     "industries": "Phosphate mining, offshore banking, coconut products",
     "accepted_capitals": [
       "Yaren"
-    ]
+    ],
+    "iso2": "nr"
   },
   {
     "region": "Oceania",
@@ -2287,7 +2476,8 @@
     "industries": "Dairy farming, sheep/wool, food processing, tourism, forestry, manufacturing",
     "accepted_capitals": [
       "Wellington"
-    ]
+    ],
+    "iso2": "nz"
   },
   {
     "region": "Oceania",
@@ -2299,7 +2489,8 @@
     "industries": "Tourism, handicrafts, agricultural processing, construction",
     "accepted_capitals": [
       "Ngerulmud"
-    ]
+    ],
+    "iso2": "pw"
   },
   {
     "region": "Oceania",
@@ -2311,7 +2502,8 @@
     "industries": "Gold/copper mining, petroleum extraction, natural gas, palm oil, wood products",
     "accepted_capitals": [
       "Port Moresby"
-    ]
+    ],
+    "iso2": "pg"
   },
   {
     "region": "Oceania",
@@ -2323,7 +2515,8 @@
     "industries": "Food processing, building materials, auto parts, tourism, agriculture",
     "accepted_capitals": [
       "Apia"
-    ]
+    ],
+    "iso2": "ws"
   },
   {
     "region": "Oceania",
@@ -2335,7 +2528,8 @@
     "industries": "Fish processing, timber logging, palm oil, copra, gold mining",
     "accepted_capitals": [
       "Honiara"
-    ]
+    ],
+    "iso2": "sb"
   },
   {
     "region": "Oceania",
@@ -2347,7 +2541,8 @@
     "industries": "Tourism, handicrafts, agricultural processing, construction",
     "accepted_capitals": [
       "Nuku'alofa"
-    ]
+    ],
+    "iso2": "to"
   },
   {
     "region": "Oceania",
@@ -2359,7 +2554,8 @@
     "industries": "Fishing, copra, tourism, postage stamps, internet domain registry (.tv)",
     "accepted_capitals": [
       "Funafuti"
-    ]
+    ],
+    "iso2": "tv"
   },
   {
     "region": "Oceania",
@@ -2371,6 +2567,7 @@
     "industries": "Tourism, fish processing, copra, timber logging, offshore financial services",
     "accepted_capitals": [
       "Port Vila"
-    ]
+    ],
+    "iso2": "vu"
   }
 ]

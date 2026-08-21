@@ -5,14 +5,15 @@
 (function () {
   'use strict';
 
-  var TYPES = ['capital', 'currency', 'language', 'population', 'industry'];
+  var TYPES = ['capital', 'currency', 'language', 'population', 'industry', 'flag'];
   var REGIONS = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
   var TYPE_LABELS = {
     capital: 'Capital',
     currency: 'Currency',
     language: 'Language',
     population: 'Population',
-    industry: 'Industry'
+    industry: 'Industry',
+    flag: 'Flag'
   };
 
   var Questions = {
@@ -382,6 +383,7 @@
         pop: pop,
         iso: iso,
         isoKey: isoKey(iso),
+        flag: r.iso2 || null,
         inds: inds,
         indWords: mapSynonyms(contentWords(r.industries || '')),
         prompt: promptName(r.country)
@@ -572,6 +574,84 @@
     return null;
   }
 
+  /* ------------------------------------------------------------------ *
+   * Flags
+   * ------------------------------------------------------------------ */
+
+  /* Flags too alike to sit in one option set. Distractors already come from
+   * one region, which rules out the famous cross-region lookalikes (Indonesia
+   * and Monaco, Romania and Chad, Ireland and Cote d'Ivoire) but *causes* the
+   * same-region ones — the Gran Colombia tricolours, the Nordic crosses, and
+   * Australia beside New Zealand, which a circular crop makes very close. */
+  var FLAG_FAMILIES = [
+    /* Pan-Slavic white/blue/red, with and without a shield */
+    ['Russia', 'Slovakia', 'Slovenia', 'Serbia', 'Croatia', 'Czechia'],
+    /* Blue-yellow-red vertical */
+    ['Romania', 'Moldova', 'Chad', 'Andorra'],
+    /* Green-white-orange or green-white-red vertical, mirrors included */
+    ['Ireland', 'Italy', "Cote d'Ivoire", 'India', 'Niger'],
+    /* Arab Liberation red/white/black */
+    ['Egypt', 'Iraq', 'Syria', 'Yemen', 'Sudan'],
+    /* Blue ensign with the Union Jack in the canton */
+    ['Fiji', 'Tuvalu', 'Australia', 'New Zealand'],
+    /* Pan-African green/yellow/red */
+    ['Mali', 'Senegal', 'Guinea', 'Cameroon', 'Ghana', 'Ethiopia'],
+    /* Gran Colombia yellow/blue/red */
+    ['Colombia', 'Venezuela', 'Ecuador'],
+    /* Nordic cross */
+    ['Norway', 'Iceland', 'Denmark', 'Sweden', 'Finland'],
+    /* Plain red/white bicolour and its inversion */
+    ['Indonesia', 'Monaco', 'Poland'],
+    /* Red/white/blue horizontal */
+    ['Netherlands', 'Luxembourg']
+  ];
+
+  /* country -> list of family ids it belongs to (a few sit in more than one). */
+  var FLAG_FAMILY_OF = (function () {
+    var map = {};
+    FLAG_FAMILIES.forEach(function (members, id) {
+      members.forEach(function (name) {
+        (map[name] = map[name] || []).push(id);
+      });
+    });
+    return map;
+  })();
+
+  /* Two flags clash when they share a family. Enumerating pairs kept missing
+   * cases, because every lookalike family clusters inside one region — flag
+   * families and regions are both geographic, and distractors come from one
+   * region. One member per family per option set is the rule that holds. */
+  function flagTwins(a, b) {
+    var fa = FLAG_FAMILY_OF[a], fb = FLAG_FAMILY_OF[b];
+    if (!fa || !fb) return false;
+    for (var i = 0; i < fa.length; i++) {
+      if (fb.indexOf(fa[i]) !== -1) return true;
+    }
+    return false;
+  }
+ /* Same-region countries that have a flag and are not a lookalike of the
+   * answer, nor of each other once chosen. */
+  function flagPool(country) {
+    var info = INFO[country];
+    if (!info.flag) return [];
+    return (REGION_LIST[info.region] || []).filter(function (o) {
+      return o !== country && INFO[o].flag && !flagTwins(country, o);
+    });
+  }
+
+  /* Greedy pick that also keeps the three distractors distinct from each
+   * other — Colombia and Venezuela must not both appear under Ecuador. */
+  function pickFlagDistractors(country, pool) {
+    var picked = [];
+    var shuffled = shuffle(pool.slice());
+    for (var i = 0; i < shuffled.length && picked.length < 3; i++) {
+      var cand = shuffled[i];
+      var clash = picked.some(function (p) { return flagTwins(p, cand); });
+      if (!clash) picked.push(cand);
+    }
+    return picked;
+  }
+
   function computeAvailable(country, type) {
     var info = INFO[country];
     switch (type) {
@@ -588,6 +668,8 @@
           populationPool(country, 'smallest').length >= 3;
       case 'industry':
         return !info.indTwin && !!info.clues;
+      case 'flag':
+        return !!info.flag && pickFlagDistractors(country, flagPool(country)).length === 3;
       default:
         return false;
     }
@@ -686,6 +768,25 @@
       });
     }
 
+    if (type === 'flag') {
+      if (!info.flag) return null;
+      var fpicks = pickFlagDistractors(country, flagPool(country));
+      if (fpicks.length < 3) return null;
+      built = place(country, fpicks, slots);
+      return finish({
+        type: type, country: country, indexInRound: indexInRound,
+        prompt: 'Which country flies this flag?',
+        options: built.options, answerIndex: built.answerIndex,
+        headline: info.prompt, askedKey: null,
+        /* The prompt shows the flag rather than naming the country, so the
+         * question card gets the media and the options stay plain text —
+         * grading, keyboard and screen-reader paths are unchanged. */
+        media: { kind: 'flag', code: info.flag, label: 'Flag of ' + info.prompt },
+        sentence: 'That is the flag of ' + info.prompt + '.',
+        note: null
+      });
+    }
+
     if (type === 'population') {
       var polarities = ['largest', 'smallest'];
       if (Math.random() < 0.5) polarities.reverse();
@@ -750,11 +851,13 @@
       countryKey: spec.country,
       region: info.region,
       prompt: spec.prompt,
+      media: spec.media || null,
       options: spec.options,
       answerIndex: spec.answerIndex,
       reveal: {
         country: spec.country,
         region: info.region,
+        flag: info.flag,
         headline: spec.headline,
         sentence: spec.sentence,
         askedKey: spec.askedKey,
