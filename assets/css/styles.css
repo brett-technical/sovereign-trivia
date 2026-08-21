@@ -1822,3 +1822,36 @@ img { display: block; max-width: 100%; }
     to   { transform: scale(1);   opacity: 1; }
   }
 }
+
+/* --- Quiet destructive link ----------------------------------------------
+   'Reset progress' on the home screen. It has to be findable without reading
+   as an invitation — muted until hovered, and it still routes through the
+   same confirm dialog. Height stays at the 44px target despite the small
+   type, so it is no harder to hit than anything else. */
+
+.btn--quiet {
+  min-height: 44px;
+  padding-inline: var(--space-12);
+  border: 0;
+  background: none;
+  box-shadow: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-14);
+  color: var(--color-muted-foreground);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: transparent;
+  cursor: pointer;
+  transition: color var(--dur-state) var(--ease-standard),
+              text-decoration-color var(--dur-state) var(--ease-standard);
+}
+
+.btn--quiet:hover,
+.btn--quiet:focus-visible {
+  color: var(--color-destructive);
+  text-decoration-color: currentColor;
+}
+
+/* Pushed to the far end so it never sits beside the primary actions. */
+.home__foot .btn--quiet { margin-inline-start: auto; }

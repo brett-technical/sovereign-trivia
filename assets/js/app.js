@@ -26,7 +26,7 @@
   var btnPlay, btnProgress, btnTheme, chipBox, statSeen, statMastered, statBest;
   var btnQuit, meter, countEl, scoreEl, qType, qText, optionsBox;
   var revealBox, banner, revealIcon, verdict, revealCountry, factsEl, noteEl, btnNext;
-  var qFlag, revealFlag, streakEl, quizScreen;
+  var qFlag, revealFlag, streakEl, quizScreen, btnResetHome;
   var streak = 0;
 
   /* country name -> ISO2, for flag filenames. Built from the same corpus the
@@ -81,6 +81,7 @@
     revealFlag = el('reveal-flag');
     streakEl = el('round-streak');
     quizScreen = el('screen-quiz');
+    btnResetHome = el('btn-reset-home');
     btnNext = el('btn-next');
 
     summaryScore = el('summary-score');
@@ -732,14 +733,20 @@
       if (body) body.hidden = !open;
     });
 
-    btnReset.addEventListener('click', function () {
+    /* Two entry points, one dialog. The home link is deliberately quiet —
+     * it is a destructive action sitting on the first screen. */
+    function openResetDialog() {
       if (typeof dialog.showModal === 'function') dialog.showModal();
-    });
+    }
+    btnReset.addEventListener('click', openResetDialog);
+    btnResetHome.addEventListener('click', openResetDialog);
     btnResetCancel.addEventListener('click', function () { dialog.close(); });
     btnResetConfirm.addEventListener('click', function () {
       Progress.reset();
       dialog.close();
-      renderProgress();
+      /* Refresh whichever screen is showing. Reset can now be fired from home,
+       * where renderProgress alone would leave the stat tiles reading stale. */
+      if (screenName === 'progress') renderProgress(); else renderHome();
       live.textContent = 'Progress reset.';
     });
 
