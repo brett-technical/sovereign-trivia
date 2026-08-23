@@ -195,7 +195,7 @@
 
   /* --- type --- */
   --font-display: 'Baloo 2', 'Segoe UI', system-ui, sans-serif;
-  --font-body: 'Comic Neue', 'Comic Sans MS', system-ui, sans-serif;
+  --font-body: 'Baloo 2', 'Segoe UI', system-ui, sans-serif;
   --text-12: .75rem;
   --text-14: .875rem;
   --text-16: 1rem;
@@ -352,6 +352,35 @@ body {
   -webkit-font-smoothing: antialiased;
   /* Structural guarantee: no element may exceed the viewport width. */
   overflow-wrap: break-word;
+  display: flex;
+  align-items: safe center;
+}
+
+/* Washed lattice. Local SVG, no network. Not a globe photo. Opacity is
+   the only lever — it must stay decoration, never a contrast partner. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .07;
+  background-repeat: no-repeat;
+  background-position: 50% -8%;
+  background-size: 130% 130%;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800' fill='none' stroke='%2364748B' stroke-width='1.1'><ellipse cx='400' cy='400' rx='280' ry='280'/><ellipse cx='400' cy='400' rx='200' ry='280'/><ellipse cx='400' cy='400' rx='110' ry='280'/><ellipse cx='400' cy='400' rx='280' ry='200'/><ellipse cx='400' cy='400' rx='280' ry='110'/><path d='M120 400h560M400 120v560'/><ellipse cx='400' cy='400' rx='280' ry='280' transform='rotate(28 400 400)' stroke-opacity='.55'/></svg>");
+}
+
+html[data-theme="dark"] body::before {
+  opacity: .14;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) body::before { opacity: .14; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { opacity: .05; }
 }
 
 h1, h2, h3, p, dl, dd, figure { margin: 0; }
@@ -378,6 +407,8 @@ img { display: block; max-width: 100%; }
    ========================================================================== */
 
 .main {
+  position: relative;
+  z-index: 1;
   width: 100%;
   padding: var(--space-24) var(--gutter) var(--space-48);
 }
@@ -962,7 +993,7 @@ img { display: block; max-width: 100%; }
               color var(--dur-state) var(--ease-standard);
 }
 
-/* Comic Neue at 18px+: 'Bandar Seri Begawan' / 'Bandar Lampung' / 'Bandung'
+/* Long option labels: 'Bandar Seri Begawan' / 'Bandar Lampung' / 'Bandung'
    need letterforms this distinct. The slab grows to fit, it never clips. */
 .opt__label {
   min-width: 0;

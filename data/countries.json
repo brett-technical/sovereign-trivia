@@ -590,7 +590,7 @@
     "region": "Africa",
     "country": "South Africa",
     "capital": "Pretoria (executive), Cape Town (legislative), Bloemfontein (judicial)",
-    "languages": "11 official (Zulu, Xhosa, Afrikaans, English, etc.)",
+    "languages": "Zulu, Xhosa, Afrikaans, English",
     "currency": "South African Rand (ZAR)",
     "population": "60.4 Million",
     "industries": "Mining (platinum, gold, chromium), automobile assembly, metalworking, machinery, chemicals",
@@ -696,7 +696,7 @@
     "region": "Africa",
     "country": "Zimbabwe",
     "capital": "Harare",
-    "languages": "16 official languages (Shona, Ndebele, English, etc.)",
+    "languages": "Shona, Ndebele, English",
     "currency": "Zimbabwe Gold (ZiG) / US Dollar (USD)",
     "population": "17.0 Million",
     "industries": "Mining (gold, platinum, coal), agriculture (tobacco, cotton), wood products, textiles",
@@ -2486,7 +2486,7 @@
     "languages": "Palauan, English",
     "currency": "United States Dollar (USD)",
     "population": "18,000",
-    "industries": "Tourism, handicrafts, agricultural processing, construction",
+    "industries": "Tourism, fishing, subsistence agriculture, eco-tourism",
     "accepted_capitals": [
       "Ngerulmud"
     ],
@@ -2538,7 +2538,7 @@
     "languages": "Tongan, English",
     "currency": "Tongan Paʻanga (TOP)",
     "population": "108,000",
-    "industries": "Tourism, handicrafts, agricultural processing, construction",
+    "industries": "Tourism, construction, fishing, remittances",
     "accepted_capitals": [
       "Nuku'alofa"
     ],

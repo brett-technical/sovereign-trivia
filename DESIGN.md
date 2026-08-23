@@ -55,8 +55,10 @@ without `color-mix` get the flat token through an `@supports not` fallback.
 ## Typography
 
 - **Display — Baloo 2** (400/600/700): headings, question text, country names,
-  numerals, UI chrome.
-- **Body — Comic Neue** (400/700): answer labels, revealed facts, prose.
+  numerals, UI chrome, and body copy.
+- **Body — Baloo 2.** Comic Neue was the previous body face. One family, both
+  themes. Comic Neue remains embedded in `fonts.css` (do not rebuild that file)
+  and is unused.
 
 Both are base64-embedded (`assets/css/fonts.css`) under the OFL so the game
 works with no network. Body text never below 16px; line-height 1.5.

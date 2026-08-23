@@ -3,8 +3,8 @@
 A geography trivia game covering **all 197 sovereign entities** — the 193 UN members
 plus the Holy See, Palestine, Taiwan and Kosovo. Not the famous two dozen. All of them.
 
-Five kinds of question, one per fact: capital city, currency, main language,
-population, and the industries an economy runs on. The four choices always come from
+Five facts plus the flag, asked six ways: capital city, currency, main language,
+population, the industries an economy runs on, and which country a flag belongs to. The four choices always come from
 the same region, so they are genuinely hard. After you answer, you see every fact for
 that country — which is the point.
 

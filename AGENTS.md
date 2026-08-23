@@ -107,12 +107,8 @@ The app is opened by double-clicking `index.html`. There is no server, ever.
   families.
 
 ## Known data defects
-- **Palau and Tonga** — identical `industries` strings; the `industry` type is
-  disabled for both until the data is differentiated.
-- **South Africa and Zimbabwe** — open-set `languages` strings, so the `language`
-  type is disabled for both. Four of the 197 therefore carry four facts, not five;
-  the mastery denominator adapts on its own.
-- Fixed 2026-08-20: France's `industries` read `food/bequest`; now `food/beverage`.
-  A corrupt token is the *rarest* word in the corpus, so the clue ranker promotes it
-  to the front of that country's question every time. Spell-check before you commit
-  corpus text.
+- None open as of 2026-08-23. Palau/Tonga industries were identical (type
+  disabled); split using CIA Factbook industries after the notebook table
+  collapsed them. South Africa / Zimbabwe language strings were open-set
+  (`N official … etc.`); closed to named languages from the same notebook.
+  France `food/bequest` → `food/beverage` was fixed 2026-08-20.
