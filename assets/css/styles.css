@@ -352,8 +352,6 @@ body {
   -webkit-font-smoothing: antialiased;
   /* Structural guarantee: no element may exceed the viewport width. */
   overflow-wrap: break-word;
-  display: flex;
-  align-items: safe center;
 }
 
 /* Washed lattice. Local SVG, no network. Not a globe photo. Opacity is
@@ -409,7 +407,10 @@ img { display: block; max-width: 100%; }
 .main {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  min-height: 100vh;
   padding: var(--space-24) var(--gutter) var(--space-48);
 }
 
@@ -425,7 +426,11 @@ img { display: block; max-width: 100%; }
   animation: screen-enter var(--dur-enter) var(--ease-out) backwards;
 }
 
-.screen--home { gap: var(--gap-section); }
+.screen--home {
+  flex: 1 1 auto;
+  justify-content: flex-start;
+  gap: var(--gap-section);
+}
 .screen--progress {
   gap: var(--space-32);
   max-width: var(--container-wide);
@@ -707,6 +712,9 @@ img { display: block; max-width: 100%; }
   gap: var(--space-8);
 }
 
+/* Title stays at the top. Play + tiles + chips occupy the leftover height. */
+.screen--home > .btn--cta { margin-block-start: auto; }
+
 .wordmark {
   font-family: var(--font-display);
   font-weight: 700;
@@ -855,6 +863,7 @@ img { display: block; max-width: 100%; }
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-12);
+  margin-block-start: auto;
 }
 
 
@@ -1805,6 +1814,7 @@ img { display: block; max-width: 100%; }
 .screen--quiz {
   --tint: var(--region-all);
   position: relative;
+  flex: 1 1 auto;
   background-image:
     radial-gradient(120% 70% at 50% -10%,
       color-mix(in srgb, var(--tint) 16%, transparent) 0%,
@@ -1812,6 +1822,11 @@ img { display: block; max-width: 100%; }
   background-repeat: no-repeat;
   transition: background-image var(--dur-state) var(--ease-standard);
 }
+
+/* Question + answers sit in the leftover height. Quizbar stays at the top.
+   Next sits at the bottom. Tall reveal collapses the auto margins and scrolls. */
+.screen--quiz > .question { margin-block-start: auto; }
+.screen--quiz > .actionbar { margin-block-start: auto; }
 
 .screen--quiz[data-region="Africa"]   { --tint: var(--region-africa); }
 .screen--quiz[data-region="Americas"] { --tint: var(--region-americas); }
