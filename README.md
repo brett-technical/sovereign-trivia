@@ -10,6 +10,20 @@ that country — which is the point.
 
 Your progress is saved in your browser. Countries you miss come back sooner.
 
+## Get it
+
+**Option 1:** Download the ZIP and unzip it — no git required:
+
+https://github.com/brett-technical/sovereign-trivia/archive/refs/heads/main.zip
+
+**Option 2:** Clone and stay up to date:
+
+```bash
+git clone https://github.com/brett-technical/sovereign-trivia.git
+```
+
+Then double-click `Play Trivia.bat`.
+
 ## How to run it
 
 Double-click **`Play Trivia.bat`**.

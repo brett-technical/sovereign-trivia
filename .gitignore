@@ -3,6 +3,9 @@ Thumbs.db
 desktop.ini
 .DS_Store
 
+# Git worktrees (local factory)
+.worktrees/
+
 # Editor
 .vscode/
 .idea/
